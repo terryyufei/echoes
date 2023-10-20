@@ -436,7 +436,11 @@ form {
 .form__control {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.6rem;
+}
+.form__control.inline {
+    flex-direction: row;
+    align-items: center;
 }
 input, textarea, select {
     padding: 0.8rem 1.4rem;

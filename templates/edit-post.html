@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implicit Declarations</title>
+
+    <!-- css stylesheet  -->
+    <link rel="stylesheet" href="/static/styles.css">
+
+    <!-- iconscout stylesheet -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+
+    <!-- fontawesome  -->
+    <script src="https://kit.fontawesome.com/065d7448de.js" crossorigin="anonymous"></script>
+
+    <!-- Google fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <div class="container nav__container">
+            <a href="index.html" class="nav__logo">Implicit Declarations</a>
+            <ul class="nav__items">
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <!-- <li><a href="sigin.html">Sign In</a></li> -->
+                <!-- to be seen if you are signed in  -->
+                <li class="nav__profile">
+                    <div class="avatar">
+                        <img src="/static/images/avatar1.jpg" alt="profile pic">
+                    </div>
+                    <ul>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="logout">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <button id="open__nav-btn"><i class="uil uil-bars"></i></button>
+            <button id="close__nav-btn"><i class="uil uil-multiply"></i></button>
+        </div>
+    </nav>
+    <!-- ************************End of Navigation bar**************************** -->
+
+
+
+    <section class="form__section">
+        <div class="container form__section-container">
+            <h2>Edit Post</h2>            
+            <form action="" enctype="multipart/form-data">
+                <input type="text" placeholder="Title">
+                <select name="" id="">
+                    <option value="">Category</option>
+                    <option value="1">Wild life</option>
+                    <option value="2">Art</option>
+                    <option value="3">Music</option>
+                    <option value="4">Food</option>
+                    <option value="5">Travel</option>
+                    <option value="6">Science & Technology</option>
+                </select>
+                <textarea name=""  rows="10" placeholder="Tell your story"></textarea>
+                <div class="form__control inline">
+                    <input type="checkbox" id="is_featured" checked>
+                    <label for="is_featured">Featured</label>
+                </div>
+                <div class="form__control">
+                    <label for="thumbnail">Edit Thumbnail</label>
+                    <input type="file" id="thumbnail">
+                </div>  
+                
+                <button class="btn" type="submit">Publish</button>
+            </form>
+        </div>
+    </section>
+    <footer>
+        <div class="footer__socials">
+            <a href="https://twitter.com/Mssophia_" target="_blank">
+                <i class="social-icon fa-brands fa-x-twitter fa-xl"></i></a>
+
+            <a href="https://sophiaintech.hashnode.dev/" target="_blank">
+                <i class="social-icon fa-brands fa-hashnode fa-lg"></i></a>
+
+            <a href="mailto:sophiaterryyu@gmail.com">
+                <i class="social-icon fa-solid fa-envelope fa-xl"></i></a>
+
+            <a href="https://github.com/terryyufei" target="_blank">
+                <i class="social-icon fa-brands fa-github fa-xl"></i></a>
+        </div>
+        <div class="container footer__container">
+            <article>
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="">Art</a></li>
+                    <li><a href="">Wild life</a></li>
+                    <li><a href="">Travel</a></li>
+                    <li><a href="">Science & Technology</a></li>
+                    <li><a href="">food</a></li>
+                    <li><a href="">Music</a></li>
+                </ul>
+            </article>
+            <article>
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="">Online Support</a></li>
+                    <li><a href="">Call Numbers</a></li>
+                    <li><a href="">Emails</a></li>
+                    <li><a href="">Social Support</a></li>
+                    <li><a href="">Location</a></li>
+                </ul>
+            </article>
+            <article>
+                <h4>Blog</h4>
+                <ul>
+                    <li><a href="">Safety</a></li>
+                    <li><a href="">Repair</a></li>
+                    <li><a href="">Recent</a></li>
+                    <li><a href="">Popular</a></li>
+                    <li><a href="">Categories</a></li>
+                </ul>
+            </article>
+            <article>
+                <h4>Permalinks</h4>
+                <ul>
+                    <li><a href="">Home</a></li>
+                    <li><a href="">Blog</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Services</a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+            </article>
+        </div>
+        <div class="footer__copyright">
+            <small>Copyright &copy; 2023 Sophia Terry</small>
+        </div>
+    </footer>
+
+
+    <script src="/static/scripts/main.js"></script>
+
+
+</body>
+
+
+</html>
