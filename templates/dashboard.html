@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implicit Declarations</title>
+
+    <!-- css stylesheet  -->
+    <link rel="stylesheet" href="/static/styles.css">
+
+    <!-- iconscout stylesheet -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+
+    <!-- fontawesome  -->
+    <script src="https://kit.fontawesome.com/065d7448de.js" crossorigin="anonymous"></script>
+
+    <!-- Google fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <div class="container nav__container">
+            <a href="index.html" class="nav__logo">Implicit Declarations</a>
+            <ul class="nav__items">
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <!-- <li><a href="sigin.html">Sign In</a></li> -->
+                <!-- to be seen if you are signed in  -->
+                <li class="nav__profile">
+                    <div class="avatar">
+                        <img src="/static/images/avatar1.jpg" alt="profile pic">
+                    </div>
+                    <ul>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="logout">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <button id="open__nav-btn"><i class="uil uil-bars"></i></button>
+            <button id="close__nav-btn"><i class="uil uil-multiply"></i></button>
+        </div>
+    </nav>
+    <!-- ************************End of Navigation bar**************************** -->
+
+
+<section class="dashboard">
+    <div class="container dashboard__container">
+        <button id="show__sidebar-btn" class="sidebar__toggle"><i class="fa-solid fa-angle-right"></i></button>
+        <button id="hide__sidebar-btn" class="sidebar__toggle"><i class="fa-solid fa-angle-left"></i></button>
+        <aside>
+            <ul>
+                <li>
+                    <a href="add-post.html">                       
+                        <i class="fa-regular fa-pen-to-square"></i>
+                        <h5>Add Post</h5>
+                    </a>
+                </li>
+                <li>
+                    <a href="dashboard.html" class="active">                    
+                    <i class="fa-solid fa-list"></i>
+                    
+                        <h5>Manage Posts</h5>
+                    </a>
+                </li>
+                <li>
+                    <a href="add-user.html">
+                     <i class="fa-regular fa-user"></i>
+                        <h5>Add User</h5>
+                    </a>
+                </li>
+                <li>
+                    <a href="manage-users.html">                     
+                      <i class="fa-solid fa-users"></i>
+                        <h5>Manage User</h5>
+                    </a>
+                </li>
+                <li>
+                    <a href="add-category.html">
+                       <i class="fa-solid fa-file-pen"></i>
+                        <h5>Add Category</h5>
+                    </a>
+                </li>
+                <li>
+                    <a href="manage-categories.html">
+                       <i class="fa-regular fa-folder-open"></i>
+                        <h5>Manage Categories</h5>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+        <main>
+            <h2>Manage Posts</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Edit</th>
+                        <th>Delete</th>                       
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>A blog for my blog.</td>
+                        <td>Science & Technology</td>
+                        <td><a href="edit-post.html" class="btn sm">Edit</a></td>
+                        <td><a href="delete-post.html" class="btn sm danger">Delete</a></td>
+                        
+                    </tr>
+                    <tr>
+                        <td>A boy cat named Bella</td>
+                        <td>Wildlife</td>
+                        <td><a href="edit-post.html" class="btn sm">Edit</a></td>
+                        <td><a href="delete-post.html" class="btn sm danger">Delete</a></td>
+                        
+                    </tr>
+                    <tr>
+                        <td>How to spotify ad free and keep your money</td>
+                        <td>Music</td>
+                        <td><a href="edit-post.html" class="btn sm">Edit</a></td>
+                        <td><a href="delete-post.html" class="btn sm danger">Delete</a></td>
+                       
+                    </tr>                  
+                </tbody>
+            </table>
+            
+        </main>
+    </div>
+</section>
+<!-- *****************************END OF MANAGE CATEGORIES SECTION************************************* -->
+
+ <footer>
+        <div class="footer__socials">
+            <a href="https://twitter.com/Mssophia_" target="_blank">
+                <i class="social-icon fa-brands fa-x-twitter fa-xl"></i></a>
+
+            <a href="https://sophiaintech.hashnode.dev/" target="_blank">
+                <i class="social-icon fa-brands fa-hashnode fa-lg"></i></a>
+
+            <a href="mailto:sophiaterryyu@gmail.com">
+                <i class="social-icon fa-solid fa-envelope fa-xl"></i></a>
+
+            <a href="https://github.com/terryyufei" target="_blank">
+                <i class="social-icon fa-brands fa-github fa-xl"></i></a> 
+        </div>
+        <div class="container footer__container">
+            <article>
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="">Art</a></li>
+                    <li><a href="">Wild life</a></li>
+                    <li><a href="">Travel</a></li>
+                    <li><a href="">Science & Technology</a></li>
+                    <li><a href="">food</a></li>
+                    <li><a href="">Music</a></li>
+                </ul>
+            </article>
+            <article>
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="">Online Support</a></li>
+                    <li><a href="">Call Numbers</a></li>
+                    <li><a href="">Emails</a></li>
+                    <li><a href="">Social Support</a></li>
+                    <li><a href="">Location</a></li>                    
+                </ul>
+            </article>
+            <article>
+                <h4>Blog</h4>
+                <ul>
+                    <li><a href="">Safety</a></li>
+                    <li><a href="">Repair</a></li>
+                    <li><a href="">Recent</a></li>
+                    <li><a href="">Popular</a></li>
+                    <li><a href="">Categories</a></li>                   
+                </ul>
+            </article>
+            <article>
+                <h4>Permalinks</h4>
+                <ul>
+                    <li><a href="">Home</a></li>
+                    <li><a href="">Blog</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Services</a></li>
+                    <li><a href="">Contact</a></li>                   
+                </ul>
+            </article>
+        </div>
+        <div class="footer__copyright">
+            <small>Copyright &copy; 2023 Sophia Terry</small>
+        </div>
+    </footer>
+
+
+    <script src="/static/scripts/main.js"></script>
+
+
+</body>
+
+</html>
