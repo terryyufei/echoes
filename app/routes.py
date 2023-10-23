@@ -101,6 +101,16 @@ def signup():
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('signin'))
     return render_template('signup.html', title='Sign Up', form=form)
+
+@app.route('/user/<username>')
+@login_required
+def profile(username):
+    user = User.query.filter_by(username=username).first_or_404()
+    posts = [
+        {'author': user, 'body': 'Test post #1'},
+        {'author': user, 'body': 'Test post #2'}
+    ]
+    return render_template('profile.html', user=user, posts=posts)
    
 
 if __name__ == '__main__':

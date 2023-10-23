@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="container profile__container"></div>
+   <h1> {{ user.username }}</h1>
+    <hr>
+    {% for post in posts %}
+    <p>
+    {{ post.author.username }} says: <b>{{ post.body }}</b>
+    </p>
+    {% endfor %}
+{% endblock %}
+
+
+{% block footer %}
+    <!-- Leave this block empty to omit the footer -->
+{% endblock %}

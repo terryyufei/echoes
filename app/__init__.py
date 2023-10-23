@@ -18,4 +18,6 @@ migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view = 'signin'
 
+
+
 from app import routes, models

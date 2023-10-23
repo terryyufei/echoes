@@ -773,3 +773,9 @@ input, textarea, select {
         display: none;
      }
 }
+
+.profile__container {
+    /* margin-top: 6rem; */
+    padding: 2rem;
+}
+
