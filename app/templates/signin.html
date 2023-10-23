@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="form__section">
+        <div class="container form__section-container">
+            <h2>Sign In</h2>
+            
+            <form action="" enctype="multipart/form-data" method="post"> 
+                {{ form.hidden_tag() }}               
+                {{ form.username.label }} {{ form.username(size=20, required="required") }}                           
+                {{ form.password.label }} {{ form.password(size=20, required="required") }}               
+                {{ form.submit(class="btn") }}
+                <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+                <small>Don't have an account? <a href="{{ url_for('signup') }}">Sign Up</a></small>
+            </form>
+        </div>
+    </section>
+{% endblock %}
