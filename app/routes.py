@@ -129,11 +129,17 @@ def edit_profile():
     if form.validate_on_submit():
         image_file = save_image(form.picture.data)
         current_user.image_file = image_file
+        current_user.username = form.username.data
+        current_user.about_me = form.about_me.data
         db.session.commit()
+        flash('Your changes have been saved.')
         return redirect(url_for('edit_profile'))
-    image_url = None  # Initialize to None
-    if current_user.image_file:    
-     image_url = url_for('static', filename='profile_pics/' + current_user.image_file)    
+    elif request.method == 'GET':
+        form.username.data = current_user.username
+        form.about_me.data = current_user.about_me
+        image_url = None  # Initialize to None
+        if current_user.image_file:    
+            image_url = url_for('static', filename='profile_pics/' + current_user.image_file)    
     return render_template('edit_profile.html', title='Edit Profile', form=form, image_url=image_url)
 
 

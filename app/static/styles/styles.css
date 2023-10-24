@@ -777,6 +777,7 @@ input, textarea, select {
 .profile__container
 {
     margin-top: 6rem;
+    background: var(--color-gray-900);
 }
 .display__pic {
     border-radius: var(--card-border-radius-5) 0;
@@ -797,3 +798,18 @@ input, textarea, select {
     height: 10%; 
 }
 
+.link__button {
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: var(--card-border-radius-2);
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-align: center;
+
+}
+
+ .link__button:hover {
+    color: var(--color-white);
+ }
