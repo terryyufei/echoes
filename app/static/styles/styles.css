@@ -774,8 +774,17 @@ input, textarea, select {
      }
 }
 
-.profile__container {
+.profile__container
+{
     margin-top: 6rem;
-    /* padding: 2rem; */
+}
+.profile-pic__container {
+    margin-top: 6rem; 
+    border-radius: var(--card-border-radius-5) 0;
+    border: 1rem solid var(--color-gray-900);
+    overflow: hidden;
+    margin-bottom: 1.6rem;  
+    width: 20%;
+    height: 10%; 
 }
 

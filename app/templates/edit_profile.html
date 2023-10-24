@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section class="form__section">
+        <div class="container form__section-container">
+            <h2>Edit Profile</h2>
+            
+            <form action="{{ url_for('edit_profile') }}" enctype="multipart/form-data" method="post">
+                {{ form.hidden_tag() }}
+                    {{ form.username.label }} {{ form.username(size=20, required="required") }}
+                    {% for error in form.username.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                
+                <p>
+                    {{ form.about_me.label }}<br>
+                    {{ form.about_me(cols=70, rows=4) }}<br>
+                    {% for error in form.about_me.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                        
+                
+                
+                {{ form.submit(class="btn") }}
+            </form>
+        </div>
+    </section>
+{% endblock %}

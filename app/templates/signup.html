@@ -10,10 +10,8 @@
                  {{ form.email.label }} {{ form.email(size=20, required="required") }}
                  {{ form.password.label }} {{ form.password(size=20, required="required") }}
                  {{ form.password2.label }} {{ form.password2(size=20, required="required") }}
-                <div class="form__control">
-                    <label for="avatar">User Avatar</label>
-                    {{ form.avatar() }}
-                </div>
+                 {{ form.avatar.label }} {{ form.avatar() }}
+                
                 {{ form.submit(class="btn") }}
                 <small>Already have an account? <a href="{{ url_for('signin') }}">Sign In</a></small>
             </form>

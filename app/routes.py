@@ -3,24 +3,26 @@
 
 from flask import Flask, render_template, redirect, url_for, flash, request
 from app import app, db
-from app.forms import SigninForm, RegistrationForm
+from app.forms import SigninForm, RegistrationForm, ProfileForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User
 from werkzeug.urls import url_parse
+from werkzeug.utils import secure_filename
+import os
 
 # @app.route('/', methods=['GET', 'POST'])
 @app.route('/index')
 def index():
     """Home page Route"""
     title = 'Implicit Declarations'  # Title to be passed to the template
-    user = current_user
-    return render_template('index.html', title=title, user=user)
+    
+    return render_template('index.html', title=title)
 
 @app.route('/blog')  # Define the 'blog' endpoint
 def blog():
     # Add your blog logic here
-    user = current_user
-    return render_template('blog.html', user=user)
+   
+    return render_template('blog.html')
 
 @app.route('/about') 
 def about():
@@ -37,11 +39,7 @@ def contact():
     # Add your blog logic here
     return render_template('contact.html')
 
-@app.route('/contact')
-@login_required  
-def dashboard():
-    # Add your blog logic here
-    return render_template('dashboard.html')
+
 
 
 
@@ -104,16 +102,39 @@ def signup():
         return redirect(url_for('signin'))
     return render_template('signup.html', title='Sign Up', form=form)
 
-@app.route('/user/<username>')
+
+
+
+
+def save_image(picture_file):
+    picture_name = picture_file.filename
+    picture_path = os.path.join(app.root_path, 'static/profile_pics' ,picture_name)
+    picture_file.save(picture_path)
+    return picture_name
+
+
+@app.route('/user/<username>', methods=['GET', 'POST'])
 @login_required
 def profile(username):
+    form = ProfileForm()            
     user = User.query.filter_by(username=username).first_or_404()
     posts = [
         {'author': user, 'body': 'Test post #1'},
-        {'author': user, 'body': 'Test post #2'}
-    ]
-    return render_template('profile.html', user=user, posts=posts)
+        {'author': user, 'body': 'Test post #2'}]
+    
+    if form.validate_on_submit():
+        image_file = save_image(form.picture.data)
+        current_user.image_file = image_file
+        db.session.commit()
+        return redirect(url_for('/user/<username>'))
+    image_url = None  # Initialize to None
+    if current_user.image_file:    
+     image_url = url_for('static', filename='profile_pics/' + current_user.image_file)    
+    return render_template('profile.html', user=user, posts=posts, form=form, image_url=image_url)
    
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

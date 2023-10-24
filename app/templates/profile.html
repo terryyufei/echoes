@@ -1,28 +1,29 @@
 {% extends "base.html" %}
-
-
 {% block content %}
+ 
 <div class="container profile__container">
-    <table>
-        <tr valign="top">
-            <td><img src="{{ user.avatar(128) }}"></td>
-            <td><h1>{{ user.username }}</h1></td>
-        </tr>
-    </table>
-    <hr>
-    
-    {% for post in posts %}
-    <table>
-        <tr valign="top">
-            <td><img src="{{ post.author.avatar(36) }}"></td>
-            <td>{{ post.author.username }} says:<br>{{ post.body }}</td>
-        </tr>
-    </table>
+    <h1>Welcome to your profile</h1>
 </div>
-    {% endfor %}
-{% endblock %}
 
-
-{% block footer %}
-    <!-- Leave this block empty to omit the footer -->
-{% endblock %}
+<div class="container profile-pic__container"> 
+ <img src="{{ image_url}}" alt="">
+ </div>
+ <section class="form__section">
+        <div class="container form__section-container">
+                       
+            <form action="" enctype="multipart/form-data" method="post">
+                 {{ form.hidden_tag() }}                
+                               
+                 {{ form.picture.label() }} {{ form.picture }}
+                 {% if form.picture.error %}
+                    {% for error in form.picture.errors %}
+                        <span class="text-danger">{{ error }}</span><br>
+                    {% endfor %}
+                 {% endif %}
+                
+                {{ form.submit(class="btn") }}
+               
+            </form>
+        </div>
+    </section>
+ {% endblock %}
