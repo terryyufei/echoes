@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>{% block title %}{% endblock %}</title>
+
+    <title>{% block title %}{% endblock %}</title>  
 
     <!-- css stylesheet  -->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css')}}">
@@ -23,31 +23,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 </head>
+
 <body>
-{% block navbar %}
+    {% block navbar %}
     <nav>
         <div class="container nav__container">
             <a href="/index" class="nav__logo">Implicit Declarations</a>
             <!-- <a href="/signin">Sign In</a> -->
-             
+
             <ul class="nav__items">
                 <li><a href="{{ url_for('blog') }}">Blog</a></li> <!-- Modify the links using 'url_for' -->
                 <li><a href="{{ url_for('about') }}">About</a></li>
                 <li><a href="{{ url_for('services') }}">Services</a></li>
                 <li><a href="{{ url_for('contact') }}">Contact</a></li>
-                 {% if current_user.is_anonymous %}
-                <li><a href="{{ url_for('signin') }}">Sign In</a></li> 
-                 {% else %}  
+                {% if current_user.is_anonymous %}
+                <li><a href="{{ url_for('signin') }}">Sign In</a></li>
+                {% else %}
 
                 <!-- to be seen if you are signed in  -->
                 <li class="nav__profile">
-                    <div class="avatar">                        
-                                            
+                    <div class="avatar">
+                        <img src="{{ url_for('static', filename='profile_pics/' + (current_user.image_file if current_user.image_file else '')) }}" alt="">
+
+
                     </div>
                     <ul>
                         <li><a href="{{ url_for('profile', username=current_user.username) }}">Profile</a></li>
                         <li><a href="{{ url_for('logout') }}">Logout</a></li>
-                          {% endif %}
+                        {% endif %}
                     </ul>
                 </li>
             </ul>
@@ -55,25 +58,25 @@
             <button id="close__nav-btn"><i class="uil uil-multiply"></i></button>
         </div>
     </nav>
-{% endblock %}
+    {% endblock %}
     <!-- ************************End of Navigation bar**************************** -->
-{% block content %}
+    {% block content %}
     {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <ul class="flashes">
-            {% for message in messages %}
-            <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-        {% endwith %}
-        
+    {% if messages %}
+    <ul class="flashes">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
 
-{% endblock %}
 
-{% block footer %}
+    {% endblock %}
 
-      <footer>
+    {% block footer %}
+
+    <footer>
         <div class="footer__socials">
             <a href="https://twitter.com/Mssophia_" target="_blank">
                 <i class="social-icon fa-brands fa-x-twitter fa-xl"></i></a>
@@ -85,7 +88,7 @@
                 <i class="social-icon fa-solid fa-envelope fa-xl"></i></a>
 
             <a href="https://github.com/terryyufei" target="_blank">
-                <i class="social-icon fa-brands fa-github fa-xl"></i></a> 
+                <i class="social-icon fa-brands fa-github fa-xl"></i></a>
         </div>
         <div class="container footer__container">
             <article>
@@ -106,7 +109,7 @@
                     <li><a href="">Call Numbers</a></li>
                     <li><a href="">Emails</a></li>
                     <li><a href="">Social Support</a></li>
-                    <li><a href="">Location</a></li>                    
+                    <li><a href="">Location</a></li>
                 </ul>
             </article>
             <article>
@@ -116,7 +119,7 @@
                     <li><a href="">Repair</a></li>
                     <li><a href="">Recent</a></li>
                     <li><a href="">Popular</a></li>
-                    <li><a href="">Categories</a></li>                   
+                    <li><a href="">Categories</a></li>
                 </ul>
             </article>
             <article>
@@ -126,7 +129,7 @@
                     <li><a href="">Blog</a></li>
                     <li><a href="">About</a></li>
                     <li><a href="">Services</a></li>
-                    <li><a href="">Contact</a></li>                   
+                    <li><a href="">Contact</a></li>
                 </ul>
             </article>
         </div>
@@ -134,7 +137,7 @@
             <small>Copyright &copy; 2023 Sophia Terry</small>
         </div>
     </footer>
-{% endblock %}
+    {% endblock %}
 
 
     <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>

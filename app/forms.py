@@ -1,9 +1,9 @@
 """Sign in, Sign up forms"""
 
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
-from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
-from flask_wtf.file import FileField, FileAllowed
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField
+from wtforms.validators import DataRequired, Email, EqualTo, ValidationError, Length
+from flask_wtf.file import FileField, FileAllowed, FileRequired
 from app.models import User
 
 
@@ -21,8 +21,7 @@ class RegistrationForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
     password2 = PasswordField(
-        'Repeat Password', validators=[DataRequired(), EqualTo('password')])
-    #avatar = FileField('Avatar')
+        'Repeat Password', validators=[DataRequired(), EqualTo('password')])    
     submit = SubmitField('Sign Up')
 
     def validate_username(self, username):
@@ -37,6 +36,8 @@ class RegistrationForm(FlaskForm):
 
 
 
-class ProfileForm(FlaskForm):
-    picture = FileField(label="Update Profile Picture", validators=[FileAllowed(['jpg', 'png'])])
-    submit = SubmitField('Update Account')
+class EditProfileForm(FlaskForm):
+    username = StringField('Update Username')
+    about_me = TextAreaField('About me', validators=[Length(min=0, max=140)])
+    picture = FileField(label="Upload Profile Picture", validators=[FileAllowed(['jpg', 'png']), FileRequired()])
+    submit = SubmitField('Update Profile')

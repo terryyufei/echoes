@@ -18,7 +18,7 @@ class User(UserMixin, db.Model):
     image_file = db.Column(db.String(120), nullable=True)
     posts = db.relationship('Post', backref='author', lazy='dynamic')
     about_me = db.Column(db.String(140))
-    date_created = db.Column(db.DateTime, default=datetime.utcnow)
+    last_seen = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self):
         """specifies how to print objects of this class"""

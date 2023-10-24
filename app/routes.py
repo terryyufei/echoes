@@ -3,14 +3,14 @@
 
 from flask import Flask, render_template, redirect, url_for, flash, request
 from app import app, db
-from app.forms import SigninForm, RegistrationForm, ProfileForm
+from app.forms import SigninForm, RegistrationForm, EditProfileForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User
 from werkzeug.urls import url_parse
-from werkzeug.utils import secure_filename
 import os
+from datetime import datetime
 
-# @app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 @app.route('/index')
 def index():
     """Home page Route"""
@@ -103,7 +103,16 @@ def signup():
     return render_template('signup.html', title='Sign Up', form=form)
 
 
-
+@app.route('/user/<username>')
+@login_required
+def profile(username):
+    """Profile Page"""
+    user = User.query.filter_by(username=username).first_or_404()
+    posts = [
+        {'author': user, 'body': 'Test post #1'},
+        {'author': user, 'body': 'Test post #2'}
+    ]
+    return render_template('profile.html', user=user, posts=posts)
 
 
 def save_image(picture_file):
@@ -113,26 +122,27 @@ def save_image(picture_file):
     return picture_name
 
 
-@app.route('/user/<username>', methods=['GET', 'POST'])
+@app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
-def profile(username):
-    form = ProfileForm()            
-    user = User.query.filter_by(username=username).first_or_404()
-    posts = [
-        {'author': user, 'body': 'Test post #1'},
-        {'author': user, 'body': 'Test post #2'}]
-    
+def edit_profile():
+    form = EditProfileForm()    
     if form.validate_on_submit():
         image_file = save_image(form.picture.data)
         current_user.image_file = image_file
         db.session.commit()
-        return redirect(url_for('/user/<username>'))
+        return redirect(url_for('edit_profile'))
     image_url = None  # Initialize to None
     if current_user.image_file:    
      image_url = url_for('static', filename='profile_pics/' + current_user.image_file)    
-    return render_template('profile.html', user=user, posts=posts, form=form, image_url=image_url)
-   
+    return render_template('edit_profile.html', title='Edit Profile', form=form, image_url=image_url)
 
+
+
+@app.before_request
+def before_request():
+    if current_user.is_authenticated:
+        current_user.last_seen = datetime.utcnow()
+        db.session.commit()
 
 
 

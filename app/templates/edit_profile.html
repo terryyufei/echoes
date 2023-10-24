@@ -1,13 +1,26 @@
 {% extends "base.html" %}
-
 {% block content %}
-    <section class="form__section">
+ 
+<div class="container profile__container">
+    <h3>Update your profile</h3>
+</div>
+
+<div class="container profile-pic__container"> 
+ <img src="{{ url_for('static', filename='profile_pics/' + current_user.image_file) }}" alt="">
+ </div>
+ <section class="form__section">
         <div class="container form__section-container">
-            <h2>Edit Profile</h2>
-            
-            <form action="{{ url_for('edit_profile') }}" enctype="multipart/form-data" method="post">
-                {{ form.hidden_tag() }}
-                    {{ form.username.label }} {{ form.username(size=20, required="required") }}
+                       
+            <form action="" enctype="multipart/form-data" method="post">
+                 {{ form.hidden_tag() }}                
+                               
+                 {{ form.picture.label() }} {{ form.picture }}
+                 {% if form.picture.error %}
+                    {% for error in form.picture.errors %}
+                        <span class="text-danger">{{ error }}</span><br>
+                    {% endfor %}
+                 {% endif %}
+                 {{ form.username.label }} {{ form.username(size=20) }}
                     {% for error in form.username.errors %}
                     <span style="color: red;">[{{ error }}]</span>
                     {% endfor %}
@@ -18,11 +31,10 @@
                     {% for error in form.about_me.errors %}
                     <span style="color: red;">[{{ error }}]</span>
                     {% endfor %}
-                        
-                
                 
                 {{ form.submit(class="btn") }}
+               
             </form>
         </div>
     </section>
-{% endblock %}
+ {% endblock %}

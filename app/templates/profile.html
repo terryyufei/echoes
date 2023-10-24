@@ -1,29 +1,32 @@
 {% extends "base.html" %}
-{% block content %}
- 
-<div class="container profile__container">
-    <h1>Welcome to your profile</h1>
-</div>
 
-<div class="container profile-pic__container"> 
- <img src="{{ image_url}}" alt="">
- </div>
- <section class="form__section">
-        <div class="container form__section-container">
-                       
-            <form action="" enctype="multipart/form-data" method="post">
-                 {{ form.hidden_tag() }}                
-                               
-                 {{ form.picture.label() }} {{ form.picture }}
-                 {% if form.picture.error %}
-                    {% for error in form.picture.errors %}
-                        <span class="text-danger">{{ error }}</span><br>
-                    {% endfor %}
-                 {% endif %}
-                
-                {{ form.submit(class="btn") }}
-               
-            </form>
-        </div>
-    </section>
- {% endblock %}
+{% block content %}
+<div class="container profile__container">
+    <table>
+        <tr valign="top">
+            <td><img class="display__pic" src="{{  url_for('static', filename='profile_pics/' + current_user.image_file) }}"></td>
+            <td>
+                <h1>{{ user.username }}</h1>
+                {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
+                {% if user.last_seen %}<p>Last seen on: {{ user.last_seen }}</p>{% endif %}
+                {% if user == current_user %}
+                <p><a href="{{ url_for('edit_profile') }}">Edit your profile</a></p>
+                {% endif %}
+            </td>
+
+            
+        </tr>
+    </table>
+</div>
+ <div class="container posts__container"> 
+    {% for post in posts %}
+   
+        
+             <p>
+                <img class="post__author-avator" src="{{  url_for('static', filename='profile_pics/' + current_user.image_file) }}">
+               {{ post.author.username }} says:<br>{{ post.body }}
+            </p>
+      
+</div> 
+    {% endfor %}
+{% endblock %}
