@@ -13,12 +13,14 @@ from werkzeug.urls import url_parse
 def index():
     """Home page Route"""
     title = 'Implicit Declarations'  # Title to be passed to the template
-    return render_template('index.html', title=title)
+    user = current_user
+    return render_template('index.html', title=title, user=user)
 
 @app.route('/blog')  # Define the 'blog' endpoint
 def blog():
     # Add your blog logic here
-    return render_template('blog.html')
+    user = current_user
+    return render_template('blog.html', user=user)
 
 @app.route('/about') 
 def about():
@@ -115,3 +117,4 @@ def profile(username):
 
 if __name__ == '__main__':
     app.run(debug=True)
+

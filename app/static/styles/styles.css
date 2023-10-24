@@ -775,7 +775,7 @@ input, textarea, select {
 }
 
 .profile__container {
-    /* margin-top: 6rem; */
-    padding: 2rem;
+    margin-top: 6rem;
+    /* padding: 2rem; */
 }
 

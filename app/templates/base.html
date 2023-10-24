@@ -41,8 +41,8 @@
 
                 <!-- to be seen if you are signed in  -->
                 <li class="nav__profile">
-                    <div class="avatar">
-                        <img src="/static/images/avatar1.jpg" alt="profile pic">
+                    <div class="avatar">                        
+                        <img src="{{ user.avatar(128) }}">                       
                     </div>
                     <ul>
                         <li><a href="{{ url_for('profile', username=current_user.username) }}">Profile</a></li>
@@ -60,7 +60,7 @@
 {% block content %}
     {% with messages = get_flashed_messages() %}
         {% if messages %}
-        <ul>
+        <ul class="flashes">
             {% for message in messages %}
             <li>{{ message }}</li>
             {% endfor %}
