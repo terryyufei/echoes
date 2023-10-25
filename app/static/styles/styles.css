@@ -107,7 +107,7 @@ nav {
     /* background: var(--color-primary); */
      background: linear-gradient(to right, hsl(240, 56%, 30%), hsl(246, 80%, 62%));
     width: 100vw;
-    height: 4.5rem;
+    height: 3.8rem;
     position: fixed;
     top: 0;
     z-index: 10;
@@ -242,6 +242,7 @@ nav button {
     grid-template-columns: repeat(3, 1fr);
     gap: 5rem;
     margin-bottom: 5rem;
+    margin-top: 8rem;
 }
 
  /* *****************************************************

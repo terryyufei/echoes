@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+    <section class="form__section">
+        <div class="container form__section-container">
+            <h2>Add Post</h2>            
+            <form action="" method="post" enctype="multipart/form-data">
+                 {{ form.hidden_tag() }}                  
+                 {{ form.title(size=20) }} 
+                 {% for error in form.title.errors %}
+                <span class="text-danger">{{ error }}</span><br>
+                {% endfor %}            
+                
+                 {{ form.category() }}
+                 {% for error in form.category.errors %}
+                <span class="text-danger">{{ error }}</span><br>
+                {% endfor %}
+                   
+                {{ form.content(rows=10) }}
+                {% for error in form.content.errors %}
+                <span class="text-danger">{{ error }}</span><br>
+                {% endfor %}
+
+                <div class="form__control inline">
+                {{ form.is_featured() }}
+                <label for="is_featured">Featured</label>
+                </div>
+                
+                 <div class="form__control">
+                {{ form.thumbnail.label }} {{ form.thumbnail }}
+                {% if form.thumbnail.errors %}
+                    {% for error in form.thumbnail.errors %}
+                        <span class="text-danger">{{ error }}</span><br>
+                    {% endfor %}
+                {% endif %}
+                 </div>  
+                
+                {{ form.submit(class="btn", type="submit") }}
+            </form>
+        </div>
+    </section>
+
+
+
+{% endblock %}
