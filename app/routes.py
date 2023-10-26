@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """all my routes"""
 
-from flask import Flask, render_template, redirect, url_for, flash, request
+from flask import Flask, render_template, redirect, url_for, flash, request, send_from_directory,abort
 from app import app, db
 from app.forms import SigninForm, RegistrationForm, EditProfileForm, EmptyForm, AddPostForm
 from flask_login import current_user, login_user, logout_user, login_required
@@ -9,15 +9,18 @@ from app.models import User, Post
 from werkzeug.urls import url_parse
 import os
 from datetime import datetime
+import imghdr
+from werkzeug.utils import secure_filename
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index')
 def index():
     """Home page Route"""
     title = 'Implicit Declarations' 
-    posts = Post.query.all() 
+    posts = Post.query.all()
+    files = os.listdir(app.config['UPLOAD_PATH'])
     
-    return render_template('index.html', title=title, posts=posts)
+    return render_template('index.html', title=title, posts=posts, files=files)
 
 @app.route('/blog')  # Define the 'blog' endpoint
 def blog():
@@ -147,7 +150,7 @@ def edit_profile():
         form.about_me.data = current_user.about_me
         image_url = None  # Initialize to None
         if current_user.image_file:    
-            image_url = url_for('static', filename='profile_pics/' + current_user.image_file)    
+            image_url = url_for('static', filename='profile_pics/' + (current_user.image_file if current_user.image_file else ''))    
     return render_template('edit_profile.html', title='Edit Profile', form=form, image_url=image_url)
 
 
@@ -196,33 +199,51 @@ def unfollow(username):
     else:
         return redirect(url_for('index'))
 
-def save_post_image(post_file):
-    post_picture_name = post_file.filename
-    picture_path = os.path.join(app.root_path, 'static/post_pics' ,post_picture_name)
-    post_file.save(picture_path)
-    return post_picture_name
+"""NEW CODE GOES HERE"""
+
+def validate_image(stream):
+    header = stream.read(512)  # 512 bytes should be enough for a header check
+    stream.seek(0)  # reset stream pointer
+    format = imghdr.what(None, header)
+    if not format:
+        return None
+    return '.' + (format if format != 'jpeg' else 'jpg')
 
 @app.route('/add_post', methods=['GET', 'POST'])
 def add_post():
     form = AddPostForm()
-    post_url = None  # Initialize the post_url variable
-    post = None  # Initialize the post variable
     if form.validate_on_submit():
-        post = Post(content=form.content.data, title=form.title.data, author=current_user) 
-        thumbnail = save_post_image(form.thumbnail.data)
-        post.thumbnail = thumbnail
+        post = Post(content=form.content.data, title=form.title.data, author=current_user)
+
+        # Check if an image was uploaded
+        if form.image.data:
+            uploaded_file = form.image.data
+            filename = secure_filename(uploaded_file.filename)
+            if filename:
+                file_ext = os.path.splitext(filename)[1]
+                if file_ext not in app.config['UPLOAD_EXTENSIONS'] or \
+                        file_ext != validate_image(uploaded_file.stream):
+                    flash('Invalid image format. Please upload a valid image (jpg, png, gif).', 'error')
+                    return redirect(url_for('add_post'))
+
+                # Save the image to the server
+                image_path = os.path.join(app.config['UPLOAD_PATH'], filename)
+                uploaded_file.save(image_path)
+
+                # Store the image filename in the database
+                post.image = filename
+
         db.session.add(post)
         db.session.commit()
         flash('Your post is now live!')
         return redirect(url_for('index'))
-    elif request.method == 'GET':    
-        if post and post.thumbnail:    
-            post_url = url_for('static', filename='post_pics/' + post.thumbnail)    
-    return render_template('add_post.html', title='Add post', form=form, post_url=post_url)
+
+    return render_template('add_post.html', title='Add post', form=form)
 
 
-
-
+@app.route('/uploads/<filename>')
+def upload(filename):
+    return send_from_directory(app.config['UPLOAD_PATH'], filename)
 
 if __name__ == '__main__':
     app.run(debug=True)

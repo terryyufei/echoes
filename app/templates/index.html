@@ -12,8 +12,8 @@
     <div class="container posts__container">
         <article class="post">
             <div class="post__thumbnail">
-                {% if post.thumbnail %}
-                 <img src="{{ url_for('static', filename='post_pics/' + post.thumbnail) }}" alt="Post Image">
+                {% if post.image %}
+                <img src="{{ url_for('static', filename='images/' + post.image) }}" alt="Post Image">
                 {% else %}
                 <img src="{{ url_for('static', filename='/images/blog18.jpg') }}" alt="Default Image"> 
                 {% endif %}

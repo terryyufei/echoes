@@ -26,9 +26,9 @@
                 </div>
                 
                  <div class="form__control">
-                {{ form.thumbnail.label }} {{ form.thumbnail }}
-                {% if form.thumbnail.errors %}
-                    {% for error in form.thumbnail.errors %}
+                {{ form.image.label }} {{ form.image }}
+                {% if form.image.errors %}
+                    {% for error in form.image.errors %}
                         <span class="text-danger">{{ error }}</span><br>
                     {% endfor %}
                 {% endif %}

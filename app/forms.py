@@ -73,5 +73,5 @@ class AddPostForm(FlaskForm):
     ], validators=[DataRequired()])
     content = TextAreaField('Tell your story', validators=[DataRequired()], render_kw={"placeholder": "Tell your story"})
     is_featured = BooleanField('Featured')
-    thumbnail = FileField(label="Upload Post Picture", validators=[FileAllowed(['jpg', 'png']), FileRequired()])    
+    image = FileField(label="Upload Post Picture", validators=[FileAllowed(['jpg', 'png']), FileRequired()])    
     submit = SubmitField('Publish')

@@ -4,7 +4,7 @@
 <div class="container profile__container">
     <table>
         <tr valign="top">
-            <td><img class="display__pic" src="{{  url_for('static', filename='profile_pics/' + current_user.image_file) }}"></td>
+            <td><img class="display__pic" src="{{ url_for('static', filename='profile_pics/' + (current_user.image_file if current_user.image_file else '')) }}"></td>
             <td>
                 <h1>{{ user.username }}</h1>
                 {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
@@ -43,9 +43,14 @@
  <div>
     {% for post in posts %}  
         
-             <p>
-                <img class="post__author-avator" src="{{  url_for('static', filename='profile_pics/' + current_user.image_file) }}">
-               {{ post.author.username }} <br>{{ post.content }}
+            
+               
+                 <p>
+                
+               
+                
+                {{ post.title}}  <br>{{ post.content }} <br> {{ post.author.username }}
+                <img class="post__author-avator" src="{{ url_for('static', filename='uploads/' + post.image) }}" alt="post-pic">
             </p>
       
     {% endfor %}

@@ -10,6 +10,10 @@ from flask_login import LoginManager
 app = Flask(__name__)
 app.config.from_object(Config)
 
+app.config['MAX_CONTENT_LENGTH'] = 2 * 1024 * 1024
+app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png', '.gif']
+app.config['UPLOAD_PATH'] = 'app/static/images'
+
 # Flask-SQLAlchemy and Flask-Migrate initialization
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
