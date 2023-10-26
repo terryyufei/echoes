@@ -43,7 +43,7 @@
                 <!-- to be seen if you are signed in  -->
                 <li class="nav__profile">
                     <div class="avatar">
-                        <img src="{{ url_for('static', filename='profile_pics/' + (current_user.image_file if current_user.image_file else '')) }}" alt="">
+                        <img src="{{ url_for('static', filename='images/' ~ current_user.picture) }}" alt="">
 
 
                     </div>

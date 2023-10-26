@@ -18,9 +18,9 @@ def index():
     """Home page Route"""
     title = 'Implicit Declarations' 
     posts = Post.query.all()
-    files = os.listdir(app.config['UPLOAD_PATH'])
+    #files = os.listdir(app.config['UPLOAD_PATH'])
     
-    return render_template('index.html', title=title, posts=posts, files=files)
+    return render_template('index.html', title=title, posts=posts)
 
 @app.route('/blog')  # Define the 'blog' endpoint
 def blog():
@@ -126,32 +126,45 @@ def profile(username):
                             form=form)
 
 
-def save_image(picture_file):
-    picture_name = picture_file.filename
-    picture_path = os.path.join(app.root_path, 'static/profile_pics' ,picture_name)
-    picture_file.save(picture_path)
-    return picture_name
 
 
 @app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
 def edit_profile():
-    form = EditProfileForm(current_user.username)    
-    if form.validate_on_submit():
-        image_file = save_image(form.picture.data)
-        current_user.image_file = image_file
+    form = EditProfileForm(current_user.username)     
+    if form.validate_on_submit():        
         current_user.username = form.username.data
         current_user.about_me = form.about_me.data
+        current_user.picture = form.picture.data
+
+        # Check if an image was uploaded
+        if form.picture.data:
+            uploaded_file = form.picture.data
+            filename = secure_filename(uploaded_file.filename)
+            if filename != '':
+                file_ext = os.path.splitext(filename)[1]
+                if file_ext not in app.config['UPLOAD_EXTENSIONS'] or \
+                        file_ext != validate_image(uploaded_file.stream):
+                    flash('Invalid image format. Please upload a valid image (jpg, png, gif).', 'error')
+                    return redirect(url_for('edit_post'))
+                
+                # Save the image to the server
+                image_path = os.path.join(app.config['UPLOAD_PATH'], filename)
+                uploaded_file.save(image_path)
+
+                # Store the image filename in the database
+                current_user.picture = filename
+                 
+                
         db.session.commit()
         flash('Your changes have been saved.')
         return redirect(url_for('edit_profile'))
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
-        image_url = None  # Initialize to None
-        if current_user.image_file:    
-            image_url = url_for('static', filename='profile_pics/' + (current_user.image_file if current_user.image_file else ''))    
-    return render_template('edit_profile.html', title='Edit Profile', form=form, image_url=image_url)
+        form.picture.data = current_user.picture
+        
+    return render_template('edit_profile.html', title='Edit Profile', form=form)
 
 
 
@@ -219,7 +232,7 @@ def add_post():
         if form.image.data:
             uploaded_file = form.image.data
             filename = secure_filename(uploaded_file.filename)
-            if filename:
+            if filename != '':
                 file_ext = os.path.splitext(filename)[1]
                 if file_ext not in app.config['UPLOAD_EXTENSIONS'] or \
                         file_ext != validate_image(uploaded_file.stream):
@@ -231,7 +244,7 @@ def add_post():
                 uploaded_file.save(image_path)
 
                 # Store the image filename in the database
-                post.image = filename
+                post.image = filename                
 
         db.session.add(post)
         db.session.commit()

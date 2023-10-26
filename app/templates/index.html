@@ -25,7 +25,7 @@
                     <div class="post__author">
                         <div class="post__author-avator">
                             {% if current_user.is_authenticated %}
-                            <img src="" alt="">
+                            <img src="{{ img_src }}" alt="">
                             {% else %}
                             <img src="{{ url_for('static', filename='/images/cat-with-glasses.jpg') }}" alt="Default Image"> 
                             {% endif %}                           
