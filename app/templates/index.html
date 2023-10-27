@@ -25,13 +25,14 @@
                     <div class="post__author">
                         <div class="post__author-avator">
                             {% if current_user.is_authenticated %}
-                            <img src="{{ img_src }}" alt="">
+                            <img src="{{ url_for('static', filename='images/' + post.author.picture) }}" alt="">
                             {% else %}
                             <img src="{{ url_for('static', filename='/images/cat-with-glasses.jpg') }}" alt="Default Image"> 
                             {% endif %}                           
                         </div>
                         <div class="post__author-info">
-                            <h5>By: {{post.author.username }}</h5>
+                            <a href="{{ url_for('profile', username=post.author.username) }}">
+                            <h5>By: {{post.author.username }}</h5></a>
                             <small>Date Posted {{ post.date_posted }}</small>
                         </div>
                     </div>

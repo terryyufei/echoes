@@ -60,7 +60,7 @@
     </nav>
     {% endblock %}
     <!-- ************************End of Navigation bar**************************** -->
-    {% block content %}
+   
     {% with messages = get_flashed_messages() %}
     {% if messages %}
     <ul class="flashes">
@@ -71,7 +71,7 @@
     {% endif %}
     {% endwith %}
 
-
+     {% block content %}
     {% endblock %}
 
     {% block footer %}

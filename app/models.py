@@ -36,7 +36,7 @@ class User(UserMixin, db.Model):
 
     def __repr__(self):
         """specifies how to print objects of this class"""
-        return '<User {}>'.format(self.username)
+        return '<User {} picture {}>'.format(self.username, self.picture)
     
     def set_password(self, password):
         """Password hashing"""

@@ -4,9 +4,18 @@
 <div class="container profile__container">
     <table>
         <tr valign="top">
-            <td><img class="display__pic" src="{{ url_for('static', filename='images/' + current_user.picture) }}"></td>
             <td>
+                
+
+                {% if current_user.picture %}
+                <img class="display__pic" src="{{ url_for('static', filename='images/' + current_user.picture) }}">
+                {% else %}
+                <img src="{{ url_for('static', filename='/images/default_profile_pc.png') }}" alt="Default Image"> 
+                {% endif %}
+            </td>
+            <td class="user__table">
                 <h1>{{ user.username }}</h1>
+                
                 {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
                 {% if user.last_seen %}<p>Last seen on: {{ user.last_seen }}</p>{% endif %}
                 <p>{{ user.followers.count() }} followers &nbsp; {{ user.followed.count() }} following.</p>

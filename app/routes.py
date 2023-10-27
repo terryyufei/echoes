@@ -111,16 +111,8 @@ def signup():
 @login_required
 def profile(username):
     """Profile Page"""   
-    user = User.query.filter_by(username=username).first_or_404()
-    #page = request.args.get('page', 1, type=int)
-    posts = user.posts
-    """    .order_by(Post.timestamp.desc()).paginate(
-        page=page, per_page=app.config['POSTS_PER_PAGE'], error_out=False)
-    next_url = url_for('user', username=user.username, page=posts.next_num) \
-        if posts.has_next else None
-    prev_url = url_for('user', username=user.username, page=posts.prev_num) \
-        if posts.has_prev else None
-    """    
+    user = User.query.filter_by(username=username).first_or_404()    
+    posts = user.posts        
     form = EmptyForm()
     return render_template('profile.html', user=user, posts=posts,
                             form=form)
@@ -146,7 +138,7 @@ def edit_profile():
                 if file_ext not in app.config['UPLOAD_EXTENSIONS'] or \
                         file_ext != validate_image(uploaded_file.stream):
                     flash('Invalid image format. Please upload a valid image (jpg, png, gif).', 'error')
-                    return redirect(url_for('edit_post'))
+                    return redirect(url_for('edit_profile'))
                 
                 # Save the image to the server
                 image_path = os.path.join(app.config['UPLOAD_PATH'], filename)

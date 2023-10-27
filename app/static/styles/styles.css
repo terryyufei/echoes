@@ -655,6 +655,7 @@ input, textarea, select {
      .form__section-container {
         padding: 3rem;
      }
+     
 
      /* DASHBOARD  */
      .dashboard__container {
@@ -775,28 +776,35 @@ input, textarea, select {
      }
 }
 
+
+
+
+ /* *****************************************************
+                    OTHERS
+***************************************************** */
+
 .profile__container
 {
-    margin-top: 6rem;
-    background: var(--color-gray-900);
+    margin-top: 10rem;
+    /* background: var(--color-gray-900); */
+    border-bottom: 2px solid var(--color-gray-900);
 }
 .display__pic {
     border-radius: var(--card-border-radius-5) 0;
     border: 1rem solid var(--color-gray-900);
     overflow: hidden;
-    height: 10rem;
+    height: 20rem;
     width: 20rem;
     
-
 }
 .profile-pic__container {
     margin-top: 6rem; 
-    border-radius: var(--card-border-radius-5) 0;
-    border: 1rem solid var(--color-gray-900);
-    overflow: hidden;
-    margin-bottom: 1.6rem;  
+    /* border-radius: var(--card-border-radius-5) 0; */
+    /* border: 1rem solid var(--color-gray-900); */
+    /* overflow: hidden; */
+    /* margin-bottom: 1.6rem;   */
     width: 20%;
-    height: 10%; 
+    height: 5%;    
 }
 
 .link__button {
@@ -814,3 +822,17 @@ input, textarea, select {
  .link__button:hover {
     color: var(--color-white);
  }
+ .flashes {
+    position: fixed;
+    left: 20px;
+    top: 100px;
+    color: #f2f2fe;
+    background-color: red;
+ }
+.edit__profile {
+    height: 50%;
+    padding-bottom: 2%;
+}
+.user__table {
+    padding: 10px;
+}

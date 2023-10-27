@@ -1,14 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
  
-<div class="container profile__container">
-    <h3>Update your profile</h3>
-</div>
+
 
 <div class="container profile-pic__container"> 
- <img src="{{ url-for('static', filename='images/' + current_user.picture) }}" alt="profile pic">
+ 
+                {% if current_user.picture %}
+                <img class="display__pic" src="{{ url_for('static', filename='images/' + current_user.picture) }}">
+                {% else %}
+                <img src="{{ url_for('static', filename='/images/default_profile_pc.png') }}" alt="Default Image"> 
+                {% endif %}
  </div>
- <section class="form__section">
+ <section class="form__section edit__profile">
         <div class="container form__section-container">
                        
             <form action="" enctype="multipart/form-data" method="post">
