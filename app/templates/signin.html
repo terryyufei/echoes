@@ -10,6 +10,7 @@
                 {{ form.password.label }} {{ form.password(size=20, required="required") }}               
                 {{ form.submit(class="btn") }}
                 <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+                <small>Forgot your password? <a href="{{ url_for('reset_password_request') }}">Click to Reset It</a></small>
                 <small>Don't have an account? <a href="{{ url_for('signup') }}">Sign Up</a></small>
             </form>
         </div>

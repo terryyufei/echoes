@@ -50,9 +50,10 @@
  
 
  <div>
-    {% for post in posts %}      
+         
     <section class="posts">
     <div class="container posts__container">
+        {% for post in posts %} 
         <article class="post">
             <div class="post__thumbnail">
                 {% if post.image %}
@@ -80,10 +81,11 @@
                     </div>
                 </div>      
         </article>
+        {% endfor %}
     </div>
 </section>
                
               
-    {% endfor %}
+    
 {% endblock %}
 </div>

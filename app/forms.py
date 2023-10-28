@@ -75,3 +75,17 @@ class AddPostForm(FlaskForm):
     is_featured = BooleanField('Featured')
     image = FileField(label="Upload Post Picture", validators=[FileAllowed(['jpg', 'png']), FileRequired()])    
     submit = SubmitField('Publish')
+
+
+class ResetPasswordRequestForm(FlaskForm):
+    """Request password request form"""
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    submit = SubmitField('Request Password Reset')
+
+
+class ResetPasswordForm(FlaskForm):
+    """password reset form"""
+    password = PasswordField('Password', validators=[DataRequired()])
+    password2 = PasswordField(
+        'Repeat Password', validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('Request Password Reset')

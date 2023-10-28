@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """all my routes"""
 
-from flask import Flask, render_template, redirect, url_for, flash, request, send_from_directory,abort
+from flask import Flask, render_template, redirect, url_for, flash, request, send_from_directory, abort
 from app import app, db
-from app.forms import SigninForm, RegistrationForm, EditProfileForm, EmptyForm, AddPostForm
+from app.forms import SigninForm, RegistrationForm, EditProfileForm, EmptyForm, AddPostForm, ResetPasswordForm, ResetPasswordRequestForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Post
 from werkzeug.urls import url_parse
@@ -11,6 +11,7 @@ import os
 from datetime import datetime
 import imghdr
 from werkzeug.utils import secure_filename
+from app.email import send_password_reset_email
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index')
@@ -249,6 +250,38 @@ def add_post():
 @app.route('/uploads/<filename>')
 def upload(filename):
     return send_from_directory(app.config['UPLOAD_PATH'], filename)
+
+@app.route('/reset_password_request', methods=['GET', 'POST'])
+def reset_password_request():
+    """Reset password request"""
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    form = ResetPasswordRequestForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user:
+            send_password_reset_email(user)
+        flash('Check your email for the instructions to reset your password')
+        return redirect(url_for('signin'))
+    return render_template('reset_password_request.html',
+                           title='Reset Password', form=form)
+    
+@app.route('/reset_password/<token>', methods=['GET', 'POST'])
+def reset_password(token):
+    """Password reset view function"""
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    user = User.verify_reset_password_token(token)
+    if not user:
+        return redirect(url_for('index'))
+    form = ResetPasswordForm()
+    if form.validate_on_submit():
+        user.set_password(form.password.data)
+        db.session.commit()
+        flash('Your password has been reset.')
+        return redirect(url_for('signin'))
+    return render_template('reset_password.html', form=form)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
