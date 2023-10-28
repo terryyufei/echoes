@@ -34,7 +34,7 @@
                         <div class="post__author-info">
                             <a href="{{ url_for('profile', username=post.author.username) }}">
                             <h5>By: {{post.author.username }}</h5></a>
-                            <small>Date Posted {{ post.date_posted }}</small>
+                            <small>Date Posted {{ post.timestamp }}</small>
                         </div>
                     </div>
                 </div>      

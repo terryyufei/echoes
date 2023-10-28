@@ -108,7 +108,7 @@ def signup():
     return render_template('signup.html', title='Sign Up', form=form)
 
 
-@app.route('/user/<username>')
+@app.route('/user/<username>') #user
 @login_required
 def profile(username):
     """Profile Page"""   
@@ -178,11 +178,11 @@ def follow(username):
             return redirect(url_for('index'))
         if user == current_user:
             flash('You cannot follow yourself!')
-            return redirect(url_for('user', username=username))
+            return redirect(url_for('index', username=username))
         current_user.follow(user)
         db.session.commit()
-        flash('You are following {}!'.format(username))
-        return redirect(url_for('user', username=username))
+        flash('You are now following {}!'.format(username))
+        return redirect(url_for('index', username=username))
     else:
         return redirect(url_for('index'))
 
@@ -197,11 +197,11 @@ def unfollow(username):
             return redirect(url_for('index'))
         if user == current_user:
             flash('You cannot unfollow yourself!')
-            return redirect(url_for('user', username=username))
+            return redirect(url_for('index', username=username))
         current_user.unfollow(user)
         db.session.commit()
-        flash('You are not following {}.'.format(username))
-        return redirect(url_for('user', username=username))
+        flash('You unfollowed {}.'.format(username))
+        return redirect(url_for('index', username=username))
     else:
         return redirect(url_for('index'))
 
