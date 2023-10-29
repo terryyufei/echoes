@@ -843,3 +843,15 @@ input, textarea, select {
     color: #f2f2fe;
     background-color: red;
  }
+.delete-btn {
+    background: var(--color-red);
+    color: var(--color-bg);
+    /* margin-top: 20px; */
+}
+
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}

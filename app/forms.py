@@ -4,7 +4,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField, SelectField
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError, Length, Regexp
 from flask_wtf.file import FileField, FileAllowed, FileRequired
-from app.models import User
+from app.models import User, Category
 
 
 class SigninForm(FlaskForm):
@@ -94,3 +94,24 @@ class ResetPasswordForm(FlaskForm):
     password2 = PasswordField(
         'Repeat Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Request Password Reset')
+
+
+class EditPostForm(FlaskForm):
+    """Edit post form"""
+    title = StringField('Title', validators=[DataRequired()])
+    content = TextAreaField('Content',validators=[DataRequired()])
+    image = FileField(label="Upload Post Picture", validators=[
+                      FileAllowed(['jpg', 'png']), FileRequired()])
+    category = SelectField('Category', coerce=int, validators=[DataRequired()])
+    submit = SubmitField('Save changes')
+    
+    def __init__(self, *args, **kwargs):
+        super(EditPostForm, self).__init__(*args, **kwargs)
+        # Populate the category choices dynamically from the database
+        self.category.choices = [(category.id, category.name) for category in Category.query.all()]
+
+
+class DeleteConfirmationForm(FlaskForm):
+    """Deleting post"""
+    confirm = SubmitField('Delete')
+    submit = SubmitField('Delete Post')

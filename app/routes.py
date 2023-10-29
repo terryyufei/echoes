@@ -4,6 +4,7 @@
 from flask import Flask, render_template, redirect, url_for, flash, request, send_from_directory, abort
 from app import app, db
 from app.forms import SigninForm, RegistrationForm, EditProfileForm, EmptyForm, AddPostForm, ResetPasswordForm, ResetPasswordRequestForm
+from app.forms import EditPostForm, DeleteConfirmationForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Post, Category
 from werkzeug.urls import url_parse
@@ -40,20 +41,13 @@ def services():
     # Add your blog logic here
     return render_template('services.html')
 
-@app.route('/contact')  
-def contact():
-    # Add your blog logic here
-    return render_template('contact.html')
 
-
-
-
-
+  
 @app.route('/post/<int:post_id>')
 def single_post(post_id):
-    # Add your blog logic here
-    # post = something
-    return render_template('post.html')
+   post = Post.query.get_or_404(post_id)
+   author = post.author
+   return render_template('single_post.html', post=post, author=author)
 
 @app.route('/signin', methods=['GET', 'POST'])
 def signin():
@@ -291,12 +285,44 @@ def reset_password(token):
 
 @app.route('/category/<category_name>')
 def category(category_name):
-    # Retrieve posts in the specified category from your database
+    """Filter using categories"""
+    # Retrieve posts in the specified category from database
     category_posts = Post.query.filter(Post.category.has(name=category_name)).all()
     authors = [post.author for post in category_posts]   
     return render_template('category.html', category_name=category_name, category_posts=category_posts, authors=authors)
 
-    
+@app.route('/edit_post/<int:post_id>', methods=['GET', 'POST'])
+def edit_post(post_id):
+    """Edit post""" 
+    post = Post.query.get_or_404(post_id)
+    form = EditPostForm(obj=post)
+    if form.validate_on_submit():
+        # Update post attributes with form data
+        post.title = form.title.data
+        post.content = form.content.data
+
+        # Ensure that 'category' is set with the ID of the selected category
+        category_id = form.category.data
+        category = Category.query.get(category_id)
+        post.category = category
+        db.session.commit()
+        flash('Post updated successfully')
+        return redirect(url_for('index', post_id=post.id))
+    return render_template('edit_post.html', post=post, form=form)
+
+@app.route('/delete_post/<int:post_id>', methods=['GET', 'POST'])
+def delete_post(post_id):
+    post = Post.query.get_or_404(post_id)
+    form = DeleteConfirmationForm(obj=post)
+    if form.validate_on_submit():
+        if request.method == 'POST':
+            db.session.delete(post)
+            db.session.commit()
+            flash('Post deleted successfully')
+            return redirect(url_for('index'))
+    return render_template('delete_post.html', post=post, form=form)
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

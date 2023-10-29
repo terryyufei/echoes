@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+ 
+    <section class="singlepost">
+        <div class=" container singlepost__container">
+            <h2>{{ post.title }}</h2>
+            <div class="post__author">
+                <div class="post__author-avator">
+                    
+                            {% if current_user.is_authenticated %}
+                            <img src="{{ url_for('static', filename='images/' + author.picture) }}" alt="avatar">
+                            {% else %}
+                            <img src="{{ url_for('static', filename='/images/default_profile_pc.png') }}" alt="Default Image"> 
+                            {% endif %}  
+                </div>
+                <div class="post__author-info">
+                    <a href="{{ url_for('profile', username=post.author.username) }}">
+                    <h5>By: {{post.author.username }}</h5></a>
+                    <small>Date Posted {{ post.timestamp }}</small>
+                </div>
+            </div>
+            <div class="singlepost__thumbnail">
+               {% if post.image %}
+                <img src="{{ url_for('static', filename='images/' + post.image) }}" alt="Post Image">
+                {% else %}
+                <img src="{{ url_for('static', filename='/images/blog18.jpg') }}" alt="Default Image"> 
+                {% endif %}
+            </div>
+            <p class="post__body">{{ post.content }}</p>
+
+            {% if current_user.is_authenticated and current_user == post.author %}
+            <div class="post__buttons button-container">
+            <a href="{{ url_for('edit_post', post_id=post.id) }}" class="btn">Edit Post</a>
+            <a href="{{ url_for('delete_post', post_id=post.id) }}" class="btn delete-btn">Delete Post</a>
+            </div>
+        {% endif %}
+        </div>
+    </section>
+
+    <!-- ************************END OF SINGLEPOST SECTION**************************** -->
+
+
+{% endblock %}
+
+  

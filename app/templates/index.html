@@ -22,8 +22,8 @@
             <div class="post__info">
              <a href="{{ url_for('category', category_name=post.category.name) }}" class="category__button">{{ post.category.name}}</a>
 
-                    <h3 class="post__title">{{ post.title }}</h3>
-                    <p class="post__body">{{ post.content }}</p>
+                    <h3 class="post__title"><a href="{{ url_for('single_post', post_id=post.id) }}">{{ post.title }}</a></h3>
+                    
                     <div class="post__author">
                         <div class="post__author-avator">
                             {% set author = authors[loop.index0] %}
