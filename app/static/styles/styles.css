@@ -836,3 +836,10 @@ input, textarea, select {
 .user__table {
     padding: 10px;
 }
+ .errors {
+    position: fixed;
+    left: 20px;
+    top: 100px;
+    color: #f2f2fe;
+    background-color: red;
+ }

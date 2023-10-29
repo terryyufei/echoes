@@ -5,7 +5,7 @@ from flask import Flask, render_template, redirect, url_for, flash, request, sen
 from app import app, db
 from app.forms import SigninForm, RegistrationForm, EditProfileForm, EmptyForm, AddPostForm, ResetPasswordForm, ResetPasswordRequestForm
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User, Post
+from app.models import User, Post, Category
 from werkzeug.urls import url_parse
 import os
 from datetime import datetime
@@ -19,9 +19,10 @@ def index():
     """Home page Route"""
     title = 'Implicit Declarations' 
     posts = Post.query.all()
-    #files = os.listdir(app.config['UPLOAD_PATH'])
+    authors = [post.author for post in posts]
+    #categories = Category.query.all()  # Retrieve categories from the database  
     
-    return render_template('index.html', title=title, posts=posts)
+    return render_template('index.html', title=title, posts=posts, authors=authors)
 
 @app.route('/blog')  # Define the 'blog' endpoint
 def blog():
@@ -221,6 +222,11 @@ def add_post():
     if form.validate_on_submit():
         post = Post(content=form.content.data, title=form.title.data, author=current_user)
 
+        # Get the selected category from the form
+        category_id = form.category.data
+        category = Category.query.get(category_id)
+        post.category = category
+
         # Check if an image was uploaded
         if form.image.data:
             uploaded_file = form.image.data
@@ -282,6 +288,15 @@ def reset_password(token):
         return redirect(url_for('signin'))
     return render_template('reset_password.html', form=form)
 
+
+@app.route('/category/<category_name>')
+def category(category_name):
+    # Retrieve posts in the specified category from your database
+    category_posts = Post.query.filter(Post.category.has(name=category_name)).all()
+    authors = [post.author for post in category_posts]   
+    return render_template('category.html', category_name=category_name, category_posts=category_posts, authors=authors)
+
+    
 
 if __name__ == '__main__':
     app.run(debug=True)

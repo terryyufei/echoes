@@ -2,7 +2,7 @@
 
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField, SelectField
-from wtforms.validators import DataRequired, Email, EqualTo, ValidationError, Length
+from wtforms.validators import DataRequired, Email, EqualTo, ValidationError, Length, Regexp
 from flask_wtf.file import FileField, FileAllowed, FileRequired
 from app.models import User
 
@@ -19,9 +19,11 @@ class RegistrationForm(FlaskForm):
     """User registartion form"""
     username = StringField('Username', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
-    password = PasswordField('Password', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired(), Length(min=8), Regexp(
+        r'^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])', message="Password must include at least one uppercase letter, one lowercase letter, and one digit.")
+    ])
     password2 = PasswordField(
-        'Repeat Password', validators=[DataRequired(), EqualTo('password')])    
+        'Repeat Password', validators=[DataRequired(), EqualTo('password', message="Passwords must match.")])
     submit = SubmitField('Sign Up')
 
     def validate_username(self, username):
@@ -35,13 +37,12 @@ class RegistrationForm(FlaskForm):
             raise ValidationError('Please use a different email address.')
 
 
-
 class EditProfileForm(FlaskForm):
     username = StringField('Update Username')
     about_me = TextAreaField('About me', validators=[Length(min=0, max=140)])
-    picture = FileField(label="Upload Profile Picture", validators=[FileAllowed(['jpg', 'png']), FileRequired()])
+    picture = FileField(label="Upload Profile Picture", validators=[
+                        FileAllowed(['jpg', 'png']), FileRequired()])
     submit = SubmitField('Update Profile')
-
 
     def __init__(self, original_username, *args, **kwargs):
         super(EditProfileForm, self).__init__(*args, **kwargs)
@@ -53,13 +54,15 @@ class EditProfileForm(FlaskForm):
             if user is not None:
                 raise ValidationError('Please use a different username.')
 
+
 class EmptyForm(FlaskForm):
     """for following & unfollowing"""
     submit = SubmitField('Submit')
 
 
 class AddPostForm(FlaskForm):
-    title = StringField('Title', validators=[DataRequired()], render_kw={"placeholder": "Title"})
+    title = StringField('Title', validators=[DataRequired()], render_kw={
+                        "placeholder": "Title"})
     category = SelectField('Category', choices=[
         ('', 'Category'),
         ('1', 'General'),
@@ -71,9 +74,11 @@ class AddPostForm(FlaskForm):
         ('6', 'Travel'),
         ('6', 'People')
     ], validators=[DataRequired()])
-    content = TextAreaField('Tell your story', validators=[DataRequired()], render_kw={"placeholder": "Tell your story"})
+    content = TextAreaField('Tell your story', validators=[
+                            DataRequired()], render_kw={"placeholder": "Tell your story"})
     is_featured = BooleanField('Featured')
-    image = FileField(label="Upload Post Picture", validators=[FileAllowed(['jpg', 'png']), FileRequired()])    
+    image = FileField(label="Upload Post Picture", validators=[
+                      FileAllowed(['jpg', 'png']), FileRequired()])
     submit = SubmitField('Publish')
 
 

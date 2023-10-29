@@ -1,17 +1,14 @@
 {% extends "base.html" %}
 
-{% block title %}
-     Implicit Declarations
-{% endblock %}
-
 {% block content %}
 
-    <!-- ************************END OF FEATURED SECTION**************************** -->
-
- <section class="posts">
+ <header class="category__title">
+        <h2>{{ category_name }} Category</h2>
+</header>
+  <section class="posts">
     <div class="container posts__container">
-         {% for post in posts %}
-        <article class="post">
+        {% for post in category_posts %}
+            <article class="post">
             <div class="post__thumbnail">
                 {% if post.image %}
                 <img src="{{ url_for('static', filename='images/' + post.image) }}" alt="Post Image">
@@ -45,22 +42,4 @@
     </div>
 </section>
 
- 
-    <!-- ************************END OF POSTS SECTION**************************** -->
-
-
-  <section class="category__buttons">
-    <div class="container category__buttons-container">
-        <a href="{{ url_for('category', category_name='General') }}" class="category__button">General</a>
-        <a href="{{ url_for('category', category_name='Tech') }}" class="category__button">Tech</a>
-        <a href="{{ url_for('category', category_name='Animals') }}" class="category__button">Animals</a>
-        <a href="{{ url_for('category', category_name='Comedy') }}" class="category__button">Comedy</a>
-        <a href="{{ url_for('category', category_name='Mystery') }}" class="category__button">Mystery</a>
-        <a href="{{ url_for('category', category_name='Culture') }}" class="category__button">Culture</a>
-        <a href="{{ url_for('category', category_name='Travel') }}" class="category__button">Travel</a>
-        <a href="{{ url_for('category', category_name='People') }}" class="category__button">People</a>
-    </div>
-</section>
-    <!-- ************************END OF CATEGORY BUTTONS  SECTION**************************** -->
-
-{%endblock %}
+{% endblock %}

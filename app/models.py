@@ -83,10 +83,7 @@ class User(UserMixin, db.Model):
             return
         return User.query.get(id)
 
-      
-     
-
-
+ 
 class Post(db.Model):
     """Posts database Model"""
     id = db.Column(db.Integer, primary_key=True)
@@ -94,10 +91,19 @@ class Post(db.Model):
     content = db.Column(db.Text)
     image = db.Column(db.String(120), nullable=True)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id', name='fk_user_id'))
+    category_id = db.Column(db.Integer, db.ForeignKey('category.id', name='fk_category_id'))
+    category = db.relationship('Category', backref=db.backref('posts', lazy=True))
+ 
+
 
     def __repr__(self):
         return '<Post {}>'.format(self.content)
+
+class Category(db.Model):
+    """Categories database"""
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(20), unique=True, nullable=False)
 
 
 @login.user_loader

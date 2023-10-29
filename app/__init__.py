@@ -30,7 +30,7 @@ login.login_view = 'signin'
 
 # Flask-Mail instance
 mail = Mail(app)
-
+"""
 if not app.debug:
     if app.config['MAIL_SERVER']:
         auth = None
@@ -59,7 +59,7 @@ if not app.debug:
 
     app.logger.setLevel(logging.INFO)
     app.logger.info('Implicit Declarartions startup')
-
+"""
 
 
 
