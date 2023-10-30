@@ -1,7 +1,12 @@
 {% extends "base.html" %}
+
+{% block title %}
+     Implicit Declarations
+{% endblock %}
+
 {% block content %}
 
-<section class="search__bar">
+ <section class="search__bar">
         <form class="container search__bar-container" action="">
             <div>
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -10,177 +15,62 @@
             <button type="submit" class="btn">Go</button>
         </form>
     </section>
-    <!-- ************************End of Search**************************** -->
 
+    <!-- ************************END OF SEARCH BAR SECTION**************************** -->
 
+ <section class="posts">
+    <div class="container posts__container">
+         {% for post in posts %}
+        <article class="post">
+            <div class="post__thumbnail">
+                {% if post.image %}
+                <img src="{{ url_for('static', filename='images/' + post.image) }}" alt="Post Image">
+                {% else %}
+                <img src="{{ url_for('static', filename='/images/blog18.jpg') }}" alt="Default Image"> 
+                {% endif %}
+            </div>
+            <div class="post__info">
+             <a href="{{ url_for('category', category_name=post.category.name) }}" class="category__button">{{ post.category.name}}</a>
 
-    <section class="posts">
-        <div class="container posts__container">
-            <article class="post">
-                <div class="post__thumbnail">
-                    <img src="/static/images/blog19.jpg" alt="">
-                </div>
-                <div class="post__info">
-                    <a href="category-posts.html" class="category__button">Wild life</a>
-                    <h3 class="post__title"><a href="post.html">Lorem ipsum dolor sit amet consectetur, adipisicing
-                            elit. Error, aliquid!</a>
-                    </h3>
-                    <p class="post__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae rerum dolorum
-                        sed
-                        corrupti quasi quia aspernatur eos ullam velit inventore molestiae nihil totam reprehenderit
-                        blanditiis, ea, assumenda accusamus laboriosam voluptates.
-                    </p>
+                    <h3 class="post__title"><a href="{{ url_for('single_post', post_id=post.id) }}">{{ post.title }}</a></h3>
+                    
                     <div class="post__author">
                         <div class="post__author-avator">
-                            <img src="/static/images/avatar3.jpg" alt="">
+                            {% set author = authors[loop.index0] %}
+                            {% if current_user.is_authenticated %}
+                            <img src="{{ url_for('static', filename='images/' + author.picture) }}" alt="avatar">
+                            {% else %}
+                            <img src="{{ url_for('static', filename='/images/default_profile_pc.png') }}" alt="Default Image"> 
+                            {% endif %}                           
                         </div>
                         <div class="post__author-info">
-                            <h5>By: John Doe</h5>
-                            <small>June 13, 2022 - 10:20</small>
+                            <a href="{{ url_for('profile', username=post.author.username) }}">
+                            <h5>By: {{post.author.username }}</h5></a>
+                            <small>Date Posted {{ post.timestamp }}</small>
                         </div>
                     </div>
-                </div>
-            </article>
-            <article class="post">
-                <div class="post__thumbnail">
-                    <img src="/static/images/blog25.jpg" alt="">
-                </div>
-                <div class="post__info">
-                    <a href="category-posts.html" class="category__button">Wild life</a>
-                    <h3 class="post__title"><a href="post.html">Lorem ipsum dolor sit amet consectetur, adipisicing
-                            elit. Error, aliquid!</a>
-                    </h3>
-                    <p class="post__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae rerum dolorum
-                        sed
-                        corrupti quasi quia aspernatur eos ullam velit inventore molestiae nihil totam reprehenderit
-                        blanditiis, ea, assumenda accusamus laboriosam voluptates.
-                    </p>
-                    <div class="post__author">
-                        <div class="post__author-avator">
-                            <img src="/static/images/avatar4.jpg" alt="">
-                        </div>
-                        <div class="post__author-info">
-                            <h5>By: John Doe</h5>
-                            <small>June 13, 2022 - 10:20</small>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <article class="post">
-                <div class="post__thumbnail">
-                    <img src="/static/images/blog13.jpg" alt="">
-                </div>
-                <div class="post__info">
-                    <a href="category-posts.html" class="category__button">Art</a>
-                    <h3 class="post__title"><a href="post.html">Lorem ipsum dolor sit amet consectetur, adipisicing
-                            elit. Error, aliquid!</a>
-                    </h3>
-                    <p class="post__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae rerum dolorum
-                        sed
-                        corrupti quasi quia aspernatur eos ullam velit inventore molestiae nihil totam reprehenderit
-                        blanditiis, ea, assumenda accusamus laboriosam voluptates.
-                    </p>
-                    <div class="post__author">
-                        <div class="post__author-avator">
-                            <img src="/static/images/avatar5.jpg" alt="">
-                        </div>
-                        <div class="post__author-info">
-                            <h5>By: John Doe</h5>
-                            <small>June 13, 2022 - 10:20</small>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <article class="post">
-                <div class="post__thumbnail">
-                    <img src="/static/images/blog2.jpg" alt="">
-                </div>
-                <div class="post__info">
-                    <a href="category-posts.html" class="category__button">Music</a>
-                    <h3 class="post__title"><a href="post.html">Lorem ipsum dolor sit amet consectetur, adipisicing
-                            elit. Error, aliquid!</a>
-                    </h3>
-                    <p class="post__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae rerum dolorum
-                        sed
-                        corrupti quasi quia aspernatur eos ullam velit inventore molestiae nihil totam reprehenderit
-                        blanditiis, ea, assumenda accusamus laboriosam voluptates.
-                    </p>
-                    <div class="post__author">
-                        <div class="post__author-avator">
-                            <img src="/static/images/avatar10.jpg" alt="">
-                        </div>
-                        <div class="post__author-info">
-                            <h5>By: John Doe</h5>
-                            <small>June 13, 2022 - 10:20</small>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <article class="post">
-                <div class="post__thumbnail">
-                    <img src="/static/images/blog30.jpg" alt="">
-                </div>
-                <div class="post__info">
-                    <a href="category-posts.html" class="category__button">Food</a>
-                    <h3 class="post__title"><a href="post.html">Lorem ipsum dolor sit amet consectetur, adipisicing
-                            elit. Error, aliquid!</a>
-                    </h3>
-                    <p class="post__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae rerum dolorum
-                        sed
-                        corrupti quasi quia aspernatur eos ullam velit inventore molestiae nihil totam reprehenderit
-                        blanditiis, ea, assumenda accusamus laboriosam voluptates.
-                    </p>
-                    <div class="post__author">
-                        <div class="post__author-avator">
-                            <img src="/static/images/avatar6.jpg" alt="">
-                        </div>
-                        <div class="post__author-info">
-                            <h5>By: John Doe</h5>
-                            <small>June 13, 2022 - 10:20</small>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <article class="post">
-                <div class="post__thumbnail">
-                    <img src="/static/images/blog69.jpg" alt="">
-                </div>
-                <div class="post__info">
-                    <a href="category-posts.html" class="category__button">Science & Technology</a>
-                    <h3 class="post__title"><a href="post.html">Lorem ipsum dolor sit amet consectetur, adipisicing
-                            elit. Error, aliquid!</a>
-                    </h3>
-                    <p class="post__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae rerum dolorum
-                        sed
-                        corrupti quasi quia aspernatur eos ullam velit inventore molestiae nihil totam reprehenderit
-                        blanditiis, ea, assumenda accusamus laboriosam voluptates.
-                    </p>
-                    <div class="post__author">
-                        <div class="post__author-avator">
-                            <img src="/static/images/avatar3.jpg" alt="">
-                        </div>
-                        <div class="post__author-info">
-                            <h5>By: John Doe</h5>
-                            <small>June 13, 2022 - 10:20</small>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        </div>
-    </section>
+                </div>      
+        </article>
+        {% endfor %}
+    </div>
+</section>
+
+ 
     <!-- ************************END OF POSTS SECTION**************************** -->
 
 
-    <section class="category__buttons">
-        <div class=" container category__buttons-container">
-            <a href="" class="category__button">Art</a>
-            <a href="" class="category__button">Wild Life</a>
-            <a href="" class="category__button">Travel</a>
-            <a href="" class="category__button">science & Technology</a>
-            <a href="" class="category__button">Food</a>
-            <a href="" class="category__button">Music</a>
-        </div>
-    </section>
+  <section class="category__buttons">
+    <div class="container category__buttons-container">
+        <a href="{{ url_for('category', category_name='General') }}" class="category__button">General</a>
+        <a href="{{ url_for('category', category_name='Tech') }}" class="category__button">Tech</a>
+        <a href="{{ url_for('category', category_name='Animals') }}" class="category__button">Animals</a>
+        <a href="{{ url_for('category', category_name='Comedy') }}" class="category__button">Comedy</a>
+        <a href="{{ url_for('category', category_name='Mystery') }}" class="category__button">Mystery</a>
+        <a href="{{ url_for('category', category_name='Culture') }}" class="category__button">Culture</a>
+        <a href="{{ url_for('category', category_name='Travel') }}" class="category__button">Travel</a>
+        <a href="{{ url_for('category', category_name='People') }}" class="category__button">People</a>
+    </div>
+</section>
     <!-- ************************END OF CATEGORY BUTTONS  SECTION**************************** -->
 
-{% endblock %}
+{%endblock %}

@@ -17,19 +17,23 @@ from app.email import send_password_reset_email
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index')
 def index():
-    """Home page Route"""
-    title = 'Implicit Declarations' 
+    """Landing page Route"""
+    title = 'Echoes' 
     posts = Post.query.all()
     authors = [post.author for post in posts]
     #categories = Category.query.all()  # Retrieve categories from the database  
     
     return render_template('index.html', title=title, posts=posts, authors=authors)
 
-@app.route('/blog')  # Define the 'blog' endpoint
+@app.route('/blog')  
 def blog():
-    # Add your blog logic here
+    title = 'Echoes' 
+    posts = Post.query.all()
+    authors = [post.author for post in posts]
+    #categories = Category.query.all()  # Retrieve categories from the database  
+    
+    return render_template('blog.html', title=title, posts=posts, authors=authors)
    
-    return render_template('blog.html')
 
 @app.route('/about') 
 def about():
@@ -54,7 +58,7 @@ def signin():
     """Sign in view function logic"""
     # Check if the user is already authenticated
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('blog'))
     
     # Create an instance for the login form
     form = SigninForm()
@@ -91,7 +95,7 @@ def logout():
 def signup():
     """User sign up form"""
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('blog'))
     form = RegistrationForm()
     if form.validate_on_submit():
         user = User(username=form.username.data, email=form.email.data)
@@ -108,9 +112,10 @@ def signup():
 def profile(username):
     """Profile Page"""   
     user = User.query.filter_by(username=username).first_or_404()    
-    posts = user.posts        
-    form = EmptyForm()
-    return render_template('profile.html', user=user, posts=posts,
+    posts = user.posts  
+    authors = [post.author for post in posts]      
+    form = EmptyForm() # followers
+    return render_template('profile.html', user=user, posts=posts, authors=authors,
                             form=form)
 
 
@@ -170,16 +175,16 @@ def follow(username):
         user = User.query.filter_by(username=username).first()
         if user is None:
             flash('User {} not found.'.format(username))
-            return redirect(url_for('index'))
+            return redirect(url_for('blog'))
         if user == current_user:
             flash('You cannot follow yourself!')
-            return redirect(url_for('index', username=username))
+            return redirect(url_for('blog', username=username))
         current_user.follow(user)
         db.session.commit()
         flash('You are now following {}!'.format(username))
-        return redirect(url_for('index', username=username))
+        return redirect(url_for('blog', username=username))
     else:
-        return redirect(url_for('index'))
+        return redirect(url_for('blog'))
 
 @app.route('/unfollow/<username>', methods=['POST'])
 @login_required
@@ -192,13 +197,13 @@ def unfollow(username):
             return redirect(url_for('index'))
         if user == current_user:
             flash('You cannot unfollow yourself!')
-            return redirect(url_for('index', username=username))
+            return redirect(url_for('blog', username=username))
         current_user.unfollow(user)
         db.session.commit()
         flash('You unfollowed {}.'.format(username))
-        return redirect(url_for('index', username=username))
+        return redirect(url_for('blog', username=username))
     else:
-        return redirect(url_for('index'))
+        return redirect(url_for('blog'))
 
 """NEW CODE GOES HERE"""
 
@@ -307,7 +312,7 @@ def edit_post(post_id):
         post.category = category
         db.session.commit()
         flash('Post updated successfully')
-        return redirect(url_for('index', post_id=post.id))
+        return redirect(url_for('blog', post_id=post.id))
     return render_template('edit_post.html', post=post, form=form)
 
 @app.route('/delete_post/<int:post_id>', methods=['GET', 'POST'])
@@ -319,7 +324,7 @@ def delete_post(post_id):
             db.session.delete(post)
             db.session.commit()
             flash('Post deleted successfully')
-            return redirect(url_for('index'))
+            return redirect(url_for('blog'))
     return render_template('delete_post.html', post=post, form=form)
 
 

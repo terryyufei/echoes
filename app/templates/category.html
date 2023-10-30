@@ -17,10 +17,8 @@
                 {% endif %}
             </div>
             <div class="post__info">
-             <a href="{{ url_for('category', category_name=post.category.name) }}" class="category__button">{{ post.category.name}}</a>
-
-                    <h3 class="post__title">{{ post.title }}</h3>
-                    <p class="post__body">{{ post.content }}</p>
+                <a href="{{ url_for('category', category_name=post.category.name) }}" class="category__button">{{ post.category.name}}</a>
+                <h3 class="post__title"><a href="{{ url_for('single_post', post_id=post.id) }}">{{ post.title }}</a></h3>                   
                     <div class="post__author">
                         <div class="post__author-avator">
                             {% set author = authors[loop.index0] %}
@@ -30,7 +28,7 @@
                             <img src="{{ url_for('static', filename='/images/default_profile_pc.png') }}" alt="Default Image"> 
                             {% endif %}                           
                         </div>
-                        <div class="post__author-info">
+                            <div class="post__author-info">
                             <a href="{{ url_for('profile', username=post.author.username) }}">
                             <h5>By: {{post.author.username }}</h5></a>
                             <small>Date Posted {{ post.timestamp }}</small>
