@@ -33,6 +33,8 @@
                 
                 {{ form.submit(class="btn", type="submit") }}
             </form>
+            {{ ckeditor.load() }}
+            {{ ckeditor.config(name='content') }}
         </div>
     </section>
 

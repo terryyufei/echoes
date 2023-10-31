@@ -26,7 +26,7 @@
                 <img src="{{ url_for('static', filename='/images/blog18.jpg') }}" alt="Default Image"> 
                 {% endif %}
             </div>
-            <p class="post__body">{{ post.content }}</p>
+            <p class="post__body">{{ post.content|safe }}</p>
 
             {% if current_user.is_authenticated and current_user == post.author %}
             <div class="post__buttons button-container">

@@ -5,6 +5,9 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextA
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError, Length, Regexp
 from flask_wtf.file import FileField, FileAllowed, FileRequired
 from app.models import User, Category
+from flask_ckeditor import CKEditorField
+
+
 
 
 class SigninForm(FlaskForm):
@@ -74,8 +77,8 @@ class AddPostForm(FlaskForm):
         ('6', 'Travel'),
         ('6', 'People')
     ], validators=[DataRequired()])
-    content = TextAreaField('Tell your story', validators=[
-                            DataRequired()], render_kw={"placeholder": "Tell your story"})
+    #content = TextAreaField('Tell your story', validators=[DataRequired()], render_kw={"placeholder": "Tell your story"})
+    content = CKEditorField('Content', validators=[DataRequired()], render_kw={"placeholder": "Tell your story"})
     is_featured = BooleanField('Featured')
     image = FileField(label="Upload Post Picture", validators=[
                       FileAllowed(['jpg', 'png']), FileRequired()])
@@ -115,3 +118,7 @@ class DeleteConfirmationForm(FlaskForm):
     """Deleting post"""
     confirm = SubmitField('Delete')
     submit = SubmitField('Delete Post')
+
+
+
+

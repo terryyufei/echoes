@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+
     <section class="form__section">
         <div class="container form__section-container">
             <h2>Add Post</h2>            
@@ -36,9 +37,9 @@
                 
                 {{ form.submit(class="btn", type="submit") }}
             </form>
+             {{ ckeditor.load() }}
+            {{ ckeditor.config(name='content') }}
         </div>
     </section>
-
-
 
 {% endblock %}

@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """all my routes"""
 
-from flask import Flask, render_template, redirect, url_for, flash, request, send_from_directory, abort
+from flask import Flask, render_template, redirect, url_for, flash, request, send_from_directory
 from app import app, db
 from app.forms import SigninForm, RegistrationForm, EditProfileForm, EmptyForm, AddPostForm, ResetPasswordForm, ResetPasswordRequestForm
 from app.forms import EditPostForm, DeleteConfirmationForm
@@ -13,6 +13,7 @@ from datetime import datetime
 import imghdr
 from werkzeug.utils import secure_filename
 from app.email import send_password_reset_email
+
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index')
@@ -28,12 +29,18 @@ def index():
 @app.route('/blog')  
 def blog():
     title = 'Echoes' 
+    # Grab all the posts from the database
     posts = Post.query.all()
     authors = [post.author for post in posts]
     #categories = Category.query.all()  # Retrieve categories from the database  
     
     return render_template('blog.html', title=title, posts=posts, authors=authors)
-   
+"""
+@app.route('/blog/<int:id>')
+def post(id):
+	post = Post.query.get_or_404(id)
+	return render_template('blog.html', post=post) 
+"""  
 
 @app.route('/about') 
 def about():
@@ -317,6 +324,7 @@ def edit_post(post_id):
 
 @app.route('/delete_post/<int:post_id>', methods=['GET', 'POST'])
 def delete_post(post_id):
+    """Delete a post view function"""
     post = Post.query.get_or_404(post_id)
     form = DeleteConfirmationForm(obj=post)
     if form.validate_on_submit():
@@ -328,6 +336,8 @@ def delete_post(post_id):
     return render_template('delete_post.html', post=post, form=form)
 
 
+
+    
 
 if __name__ == '__main__':
     app.run(debug=True)

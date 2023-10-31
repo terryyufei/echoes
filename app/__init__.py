@@ -10,9 +10,13 @@ import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 import os 
 from flask_mail import Mail
+from flask_ckeditor import CKEditor
 
 app = Flask(__name__)
 app.config.from_object(Config)
+
+# Text editor
+ckeditor = CKEditor(app)
 
 
 # For uploading photos

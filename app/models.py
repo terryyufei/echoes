@@ -10,7 +10,6 @@ import jwt
 
 
 
-
 # Followers association table
 followers = db.Table('followers',
     db.Column('follower_id', db.Integer, db.ForeignKey('user.id')),
@@ -85,7 +84,7 @@ class User(UserMixin, db.Model):
 
  
 class Post(db.Model):
-    """Posts database Model"""
+    """Posts database Model"""   
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120))
     content = db.Column(db.Text)
@@ -95,11 +94,10 @@ class Post(db.Model):
     category_id = db.Column(db.Integer, db.ForeignKey('category.id', name='fk_category_id'))
     category = db.relationship('Category', backref=db.backref('posts', lazy=True))
  
-
-
     def __repr__(self):
         return '<Post {}>'.format(self.content)
-
+    
+    
 class Category(db.Model):
     """Categories database"""
     id = db.Column(db.Integer, primary_key=True)
@@ -110,3 +108,6 @@ class Category(db.Model):
 def load_user(id):
     """Flask-Login user load function"""
     return User.query.get(int(id))
+
+
+
