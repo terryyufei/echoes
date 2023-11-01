@@ -105,7 +105,7 @@ img {
 ***************************************************** */
 nav {
     /* background: var(--color-primary); */
-     background: linear-gradient(to right, hsl(240, 56%, 30%), hsl(246, 80%, 62%));
+    background: linear-gradient(to right, hsl(240, 68%, 13%), hsl(246, 80%, 62%));
     width: 100vw;
     height: 3.8rem;
     position: fixed;
@@ -854,4 +854,29 @@ input, textarea, select {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
+}
+.nav-img {
+  height: 3.5rem;
+  width: 4.0rem;
+  /* margin-top: 2.5%; */
+  /* margin-left: 2%; */
+  
+}
+
+.btn-gradient {
+  background: linear-gradient(45deg, #1497d3, #bf1056);
+  color: white;
+  letter-spacing: 1px;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 1s ease-in;
+}
+.btn-gradient i {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.btn-gradient:hover {
+  background: linear-gradient(-45deg, #0d6790, #fc4f91);
 }

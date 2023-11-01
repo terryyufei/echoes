@@ -20,21 +20,21 @@ from app.email import send_password_reset_email
 def index():
     """Landing page Route"""
     title = 'Echoes' 
-    posts = Post.query.all()
-    authors = [post.author for post in posts]
+    #posts = Post.query.all()
+    #authors = [post.author for post in posts]
     #categories = Category.query.all()  # Retrieve categories from the database  
     
-    return render_template('index.html', title=title, posts=posts, authors=authors)
+    return render_template('index.html')
 
-@app.route('/blog')  
+@app.route('/blog', methods=['GET', 'POST'])  
 def blog():
-    title = 'Echoes' 
+    #title = 'Echoes' 
     # Grab all the posts from the database
     posts = Post.query.all()
     authors = [post.author for post in posts]
     #categories = Category.query.all()  # Retrieve categories from the database  
     
-    return render_template('blog.html', title=title, posts=posts, authors=authors)
+    return render_template('blog.html', posts=posts, authors=authors)
 """
 @app.route('/blog/<int:id>')
 def post(id):

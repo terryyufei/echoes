@@ -128,7 +128,7 @@ html {
   background: linear-gradient(45deg, #149ddd, #176c8e);
   border-radius: 10px;
 }
-
+/*
 .btn-primary {
   background-color: #03567d;
   color: rgba(255, 255, 255, 0.9333333333);
@@ -272,7 +272,7 @@ html {
   background-color: #daa520;
   color: rgba(255, 255, 255, 0.9333333333);
 }
-
+*/
 .btn-gradient {
   background: linear-gradient(45deg, #1497d3, #bf1056);
   color: white;

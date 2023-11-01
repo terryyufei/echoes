@@ -13,11 +13,11 @@
 
 <body>
         <header>
-                <img src="/static/img/echologo2.png" alt="">
+                <img src="/static/img/echologoblue.png" alt="">
 
                 <nav>
                         <ul>
-                                <li><a href="./">Home <span>/</span></a></li>
+                                <li><a href="{{ url_for('blog') }}">Blog <span>/</span></a></li>
                                 <li><a href="./signup/">Signup <span>/</span></a></li>
                                 <li><a href="./login/">Login </a></li>
                         </ul>
@@ -31,10 +31,10 @@
                                         data-words='["Our echoes roll from soul to soul and grow forever and ever."]'></span>
                         </p>
 
-                        <a href="#" class="btn-gradient">Get Started</a>
+                        <a href="{{ url_for('signin') }}" class="btn-gradient">Get Started</a>
                 </div>
                 <div class="hero-img">
-                        <img src="/static/img/girl withlaptop.png" alt="">
+                        <img src="/static/img/girlwithlaptop4.png" alt="">
                 </div>
         </main>
 
@@ -68,7 +68,7 @@
                         </div>
                 </div>
 
-                <a href="#" class="btn-gradient" data-aos="fade" data-aos-duration="1000" data-aos-delay="20"
+                <a href="{{ url_for('blog') }}" class="btn-gradient" data-aos="fade" data-aos-duration="1000" data-aos-delay="20"
                         data-aos-easing="ease-in">Try it yourself</a>
 
         </section>
@@ -99,7 +99,7 @@
                                        Sign up now, and let the world hear your voice, your stories, and your heart! 💫
                                 </p>
 
-                                <a href="./signup" class="btn-gradient">Register now</a>
+                                <a href="{{ url_for('signup') }}" class="btn-gradient">Register now</a>
                         </div>
 
                 </div>
@@ -107,15 +107,15 @@
 
         <section class="partners">
                 <h1 class="txt-gradient" data-aos="fade-up" data-aos-duration="800" data-aos-delay="6"
-                        data-aos-easing="ease-in" v>Powered By</h1>
+                        data-aos-easing="ease-in" v>Contact Us</h1>
 
                 <div class="partners-container" data-aos="fade" data-aos-duration="800" data-aos-delay="600"
                         data-aos-easing="ease-in">
-                        <img src="./assets/img/aws.png" alt="">
-                        <img src="./assets/img/oa.png" alt="">
-                        <img src="./assets/img/slack.png" alt="">
-                        <img src="./assets/img/supa.png" alt="">
-                        <img src="./assets/img/mt.png" alt="">
+                        <img src="/static/img/x2.jpeg" alt="">
+                        <img src="/static/img/github2.png" alt="">
+                        <img src="/static/img/hashnode.png" alt="">
+                        <img src="/static/img/gmail2.png" alt="">
+                        <img src="/static/img/linkd.jpg" alt="">
                 </div>
         </section>
 
