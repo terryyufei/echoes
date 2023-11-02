@@ -17,7 +17,7 @@
                 <h1>{{ user.username }}</h1>
                 
                 {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
-                {% if user.last_seen %}<p>Last seen on: {{ user.last_seen }}</p>{% endif %}
+                {% if user.last_seen %}<p>Last seen on: {{ user.last_seen.strftime('%H:%M') }}</p>{% endif %}
                 <p>{{ user.followers.count() }} followers &nbsp; {{ user.followed.count() }} following.</p>
                 {% if user == current_user %}
                 <p>
@@ -79,18 +79,18 @@
                         <div class="post__author-info">
                             <a href="{{ url_for('profile', username=post.author.username) }}">
                             <h5>By: {{post.author.username }}</h5></a>
-                            <small>Date Posted {{ post.timestamp }}</small>
+                            <small>{{ post.timestamp.strftime('%b-%d-%Y') }}</small>
                         </div>
                     </div>
                 </div>      
         </article>
         {% endfor %}
     </div>
-</section>
-
-
-               
-              
+</section>            
     
 {% endblock %}
 </div>
+{% block scripts %}
+    {{ super() }}
+    {{ moment.include_moment() }}
+{% endblock %}

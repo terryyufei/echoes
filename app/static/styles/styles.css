@@ -218,7 +218,13 @@ nav button {
     border-radius: var(--card-border-radius-3);
     overflow: hidden;
 }
+.post__title:hover a {
+   color: #be32a4;
 
+}
+.post__author-info:hover h5 {
+    color: #be32a4;
+}
  /* *****************************************************
                     FEATURED SECTION
 ***************************************************** */
