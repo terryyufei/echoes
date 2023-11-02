@@ -35,7 +35,7 @@
 
             <ul class="nav__items">
                 <li><a href="{{ url_for('blog') }}">Blog</a></li> <!-- Modify the links using 'url_for' -->
-                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('index') }}">About</a></li>
                 <li><a href="{{ url_for('services') }}">Services</a></li>
                 <li><a href="#contact">Contact</a></li>
                 {% if current_user.is_anonymous %}

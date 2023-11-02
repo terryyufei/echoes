@@ -17,6 +17,8 @@ app.config.from_object(Config)
 
 # Text editor
 ckeditor = CKEditor(app)
+#app.config['CKEDITOR_SERVE_LOCAL'] = True
+#app.config['CKEDITOR_PKG_TYPE'] = 'basic'
 
 
 # For uploading photos

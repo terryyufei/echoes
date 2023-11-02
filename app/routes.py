@@ -42,10 +42,6 @@ def post(id):
 	return render_template('blog.html', post=post) 
 """  
 
-@app.route('/about') 
-def about():
-    # Add your blog logic here
-    return render_template('about.html')
 
 @app.route('/services')  
 def services():

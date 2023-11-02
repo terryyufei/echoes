@@ -42,3 +42,23 @@ const hideSidebar = () => {
 
 showSidebarBtn.addEventListener('click', showSidebar);
 hideSidebarBtn.addEventListener('click', hideSidebar);
+
+
+
+// CKEDITOR.editorConfig = function( config ) {
+        // config.uiColor = '#751313';
+    // };
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    CKEDITOR.replace('editor1');
+    var editor = CKEDITOR.instances.editor1;
+    if (editor) {
+        editor.on('instanceReady', function (ev) {
+            var editor = ev.editor;
+            var body = editor.document.getBody();
+            body.setStyle('background-color', 'blue');
+            // Add more custom styles as needed
+        });
+    }
+});

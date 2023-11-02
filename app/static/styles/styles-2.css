@@ -733,6 +733,7 @@ body section .prompt-container .response p {
   line-height: 2rem;
   font-size: 15px;
 }
+
 body section .prompt-container .form-container {
   position: fixed;
   top: 88%;
@@ -793,6 +794,7 @@ body .numbers h1 {
 body .showcase {
   height: 60vh;
 }
+ 
 body .partners {
   height: 55vh;
   width: 100%;
@@ -817,7 +819,7 @@ body .partners .partners-container img {
   margin-top: 1%;
   border-radius: 5px;
 }
-
+ 
 @media screen and (max-width: 976px) {
   body {
     overflow-x: hidden !important;

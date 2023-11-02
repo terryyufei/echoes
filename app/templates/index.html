@@ -18,8 +18,8 @@
                 <nav>
                         <ul>
                                 <li><a href="{{ url_for('blog') }}">Blog <span>/</span></a></li>
-                                <li><a href="./signup/">Signup <span>/</span></a></li>
-                                <li><a href="./login/">Login </a></li>
+                                <li><a href="{{ url_for('signup') }}">Signup <span>/</span></a></li>
+                                <li><a href="{{ url_for('signin') }}">Signin </a></li>
                         </ul>
                 </nav>
         </header>
@@ -43,33 +43,40 @@
                 <div class="prompt-container">
                         <div class="query">
                                 <div class="u">E</div>
-                                <p class="txt-type txt-gradient"> 
-                                        Echoes is where every story finds its home.                                      
+                                <p class="txt-type txt-gradient">
+                                        Echoes is where every story finds its home.
                                 </p>
                         </div>
 
                         <div class="response">
                                 <img src="/static/img/echologo2.png" alt="">
                                 <p class="txt-type txt-gradient" data-wait="4000000">
-                                        Here, anyone can share insightful perspectives, useful knowledge and life wisdom with the world—without building a mailing list or a following first. The internet is noisy and chaotic; 
-                                        Echoes is quiet yet full of insight. 
-                                        It’s simple, beautiful, collaborative, and helps you find the right audience for whatever you have to say.<br>
-                                        We believe that what you read and write matters. Words can divide or empower us, inspire or discourage us. 
-                                        In a world where the most sensational and surface-level stories often win, 
-                                        we’re building a system that rewards depth, nuance, and time well spent. 
-                                        A space for thoughtful conversation more than drive-by takes, and substance over packaging. <br><br>
+                                        Here, anyone can share insightful perspectives, useful knowledge and life wisdom
+                                        with the world—without building a mailing list or a following first. The
+                                        internet is noisy and chaotic;
+                                        Echoes is quiet yet full of insight.
+                                        It’s simple, beautiful, collaborative, and helps you find the right audience for
+                                        whatever you have to say.<br>
+                                        We believe that what you read and write matters. Words can divide or empower us,
+                                        inspire or discourage us.
+                                        In a world where the most sensational and surface-level stories often win,
+                                        we’re building a system that rewards depth, nuance, and time well spent.
+                                        A space for thoughtful conversation more than drive-by takes, and substance over
+                                        packaging. <br><br>
                                         <i>
-                                                “And by the way, everything in life is writable about if you have the outgoing guts to do it, 
-                                                and the imagination to improvise. The worst enemy to creativity is self-doubt.”
+                                                “And by the way, everything in life is writable about if you have the
+                                                outgoing guts to do it,
+                                                and the imagination to improvise. The worst enemy to creativity is
+                                                self-doubt.”
                                         </i>
-                                </p>                               
+                                </p>
 
 
                         </div>
                 </div>
 
-                <a href="{{ url_for('blog') }}" class="btn-gradient" data-aos="fade" data-aos-duration="1000" data-aos-delay="20"
-                        data-aos-easing="ease-in">Try it yourself</a>
+                <a href="{{ url_for('blog') }}" class="btn-gradient" data-aos="fade" data-aos-duration="1000"
+                        data-aos-delay="20" data-aos-easing="ease-in">Try it yourself</a>
 
         </section>
 
@@ -85,18 +92,19 @@
 
         <section class="showcase">
                 <div class="grid-2">
-                        <img class="cat" src="/static/img/girl-with-cat-modified.png" data-aos="fade-left" data-aos-duration="800"
-                                data-aos-delay="60" data-aos-easing="ease-in" alt="" height="90%">
+                        <img class="cat" src="/static/img/girl-with-cat-modified.png" data-aos="fade-left"
+                                data-aos-duration="800" data-aos-delay="60" data-aos-easing="ease-in" alt=""
+                                height="90%">
 
                         <div class="text" data-aos="fade-right" data-aos-duration="800" data-aos-delay="6"
                                 data-aos-easing="ease-in">
                                 <h1 class="txt-gradient">We are here to declutter your mind</h1>
 
                                 <p class="txt-white">
-                                       Don't let your thoughts gather dust in the attic of your mind. 
-                                       Set them free on Echoes, let Your Story Join the Melodic Symphony of Echoes 
-                                       and watch your mental clutter transform into a breathtaking mosaic of stories. 
-                                       Sign up now, and let the world hear your voice, your stories, and your heart! 💫
+                                        Don't let your thoughts gather dust in the attic of your mind.
+                                        Set them free on Echoes, let Your Story Join the Melodic Symphony of Echoes
+                                        and watch your mental clutter transform into a breathtaking mosaic of stories.
+                                        Sign up now, and let the world hear your voice, your stories, and your heart! 💫
                                 </p>
 
                                 <a href="{{ url_for('signup') }}" class="btn-gradient">Register now</a>
@@ -111,11 +119,26 @@
 
                 <div class="partners-container" data-aos="fade" data-aos-duration="800" data-aos-delay="600"
                         data-aos-easing="ease-in">
-                        <img src="/static/img/x2.jpeg" alt="">
-                        <img src="/static/img/github2.png" alt="">
-                        <img src="/static/img/hashnode.png" alt="">
-                        <img src="/static/img/gmail2.png" alt="">
-                        <img src="/static/img/linkd.jpg" alt="">
+
+                        <a href="https://twitter.com/Mssophia_" target="_blank">
+                                <img src="/static/img/x2.jpeg" alt="">
+                        </a>
+
+                        <a href="https://github.com/terryyufei" target="_blank">
+                                <img src="/static/img/github2.png" alt="">
+                        </a>
+
+                        <a href="https://sophiaintech.hashnode.dev/" target="_blank">
+                                <img src="/static/img/hashnode.png" alt="">
+                        </a>
+
+                        <a href="mailto:sophiaterryyu@gmail.com">
+                                <img src="/static/img/gmail2.png" alt="">
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/terry-wambui-0629b7115" target="_blank">
+                                <img src="/static/img/linkd.jpg" alt="">
+                        </a>
                 </div>
         </section>
 

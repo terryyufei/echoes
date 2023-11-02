@@ -38,6 +38,28 @@
         </div>
     </section>
 
+    <style>
+        /* Custom CSS for CKEditor */
+        /* Style the textarea */
+        #cke_content {           
+            padding: 2px;            
+            background: #2d2b7c;
+            min-height: 200px;
+            max-height: 300px;
+            resize: none; /* Disable textarea resizing */
+            overflow: auto;  /* Hide the scrollbar when the content is within the height limit */       
+            
+        }
+
+        /* Style the toolbar */
+        .cke_top {
+            background-color: #9494e5;            
+            border: 1px solid #2d2b7c;
+            padding: 2px;
+        }
+        
+    </style>
+
 
 
 {% endblock %}
