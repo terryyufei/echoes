@@ -11,7 +11,7 @@ from logging.handlers import SMTPHandler, RotatingFileHandler
 import os 
 from flask_mail import Mail
 from flask_ckeditor import CKEditor
-from flask_moment import Moment
+
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -19,8 +19,7 @@ app.config.from_object(Config)
 # Text editor
 ckeditor = CKEditor(app)
 
-# Flask-Moment instance
-moment = Moment(app)
+
 
 # For uploading photos
 app.config['MAX_CONTENT_LENGTH'] = 2 * 1024 * 1024
