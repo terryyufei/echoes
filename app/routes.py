@@ -19,28 +19,32 @@ from app.email import send_password_reset_email
 @app.route('/index')
 def index():
     """Landing page Route"""
-    title = 'Echoes' 
-    #posts = Post.query.all()
-    #authors = [post.author for post in posts]
-    #categories = Category.query.all()  # Retrieve categories from the database  
-    
+    title = 'Echoes'     
     return render_template('index.html')
 
 @app.route('/blog', methods=['GET', 'POST'])  
-def blog():
-    #title = 'Echoes' 
+def blog():   
     # Grab all the posts from the database
-    posts = Post.query.all()
-    authors = [post.author for post in posts]
-    #categories = Category.query.all()  # Retrieve categories from the database  
+    #posts = Post.query.all()
+   
+
+    # Pagination
+    page = request.args.get('page', 1, type=int)
+    posts = Post.query.order_by(Post.timestamp.desc()).paginate(
+        page=page, per_page=app.config['POSTS_PER_PAGE'], error_out=False)
     
-    return render_template('blog.html', posts=posts, authors=authors)
-"""
-@app.route('/blog/<int:id>')
-def post(id):
-	post = Post.query.get_or_404(id)
-	return render_template('blog.html', post=post) 
-"""  
+    # Next and previous page links.
+    next_url = url_for('blog', page=posts.next_num) \
+        if posts.has_next else None
+    prev_url = url_for('blog', page=posts.prev_num) \
+        if posts.has_prev else None
+    
+    authors = [post.author for post in posts]
+    
+    return render_template('blog.html', posts=posts.items, authors=authors, title='Blog',
+                           next_url=next_url, prev_url=prev_url)
+
+
 
 
 @app.route('/services')  
@@ -250,7 +254,7 @@ def add_post():
         db.session.add(post)
         db.session.commit()
         flash('Your post is now live!')
-        return redirect(url_for('index'))
+        return redirect(url_for('blog'))
 
     return render_template('add_post.html', title='Add post', form=form)
 
