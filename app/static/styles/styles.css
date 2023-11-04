@@ -96,6 +96,7 @@ a {
 img {
     display: block;
     width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
@@ -202,6 +203,7 @@ nav button {
     border: 1rem solid var(--color-gray-900);
     overflow: hidden;
     margin-bottom: 1.6rem;
+    height: 50%;
 }
  .post:hover .post__thumbnail img {
     filter: saturate(0);
@@ -246,7 +248,7 @@ nav button {
 .posts__container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 5rem;
+    gap: 4rem;
     margin-bottom: 5rem;
     margin-top: 8rem;
 }
@@ -435,20 +437,7 @@ footer ul li {
 .form__section-container {
     width: var(--form-width);
 }
-.alert__message {
-    
-    padding: 0.8rem 1.4rem;
-    margin-bottom: 1rem;
-    border-radius: var(--card-border-radius-2);
-}
-.alert__message.error {
-    background: var(--color-red-light);
-    color: var(--color-red);
-}
-.alert__message.success {
-    background: var(--color-green-light);
-    color: var(--color-green);
-}
+
 form {
     display: flex;
     flex-direction: column;
@@ -793,7 +782,7 @@ input, textarea, select {
 {
     margin-top: 10rem;
     /* background: var(--color-gray-900); */
-    border-bottom: 2px solid var(--color-gray-900);
+    border-bottom: 3px solid var(--color-gray-900);
 }
 .display__pic {
     border-radius: var(--card-border-radius-5) 0;
@@ -804,13 +793,9 @@ input, textarea, select {
     
 }
 .profile-pic__container {
-    margin-top: 6rem; 
-    /* border-radius: var(--card-border-radius-5) 0; */
-    /* border: 1rem solid var(--color-gray-900); */
-    /* overflow: hidden; */
-    /* margin-bottom: 1.6rem;   */
+    /* margin-top: 6rem;  */    
     width: 20%;
-    height: 5%;    
+    /* height: 5%;     */
 }
 
 .link__button {
@@ -822,25 +807,22 @@ input, textarea, select {
     font-weight: 600;
     font-size: 0.8rem;
     text-align: center;
+    margin-top: 30px;
 
 }
 
  .link__button:hover {
     color: var(--color-white);
  }
- .flashes {
-    position: fixed;
-    left: 20px;
-    top: 100px;
-    color: #f2f2fe;
-    background-color: red;
- }
+ 
 .edit__profile {
     height: 50%;
-    padding-bottom: 2%;
+    padding-bottom: 2%;   
 }
 .user__table {
     padding: 10px;
+    font-weight: 600;
+    line-height: 2;
 }
  .errors {
     position: fixed;
@@ -862,9 +844,9 @@ input, textarea, select {
     margin-top: 20px;
 }
 .nav-img {
-  height: 3.5rem;
-  width: 4.0rem;
-  /* margin-top: 2.5%; */
+  height: 8rem;
+  width: 8rem;
+  margin-top: 5%;
   /* margin-left: 2%; */
   
 }
@@ -890,7 +872,39 @@ input, textarea, select {
 
 
  /* *****************************************************
-                    CKEditor 
+                    FLASHES
 ***************************************************** */
-/* content area  */
 
+
+.alert__message.error {
+    background: var(--color-red-light);
+    color: var(--color-red);
+}
+.flashes {
+    background: var(--color-green-light);
+    color: var(--color-green);
+    position: fixed;
+    left: 20px;
+    top: 100px;
+    padding: 0.8rem 1.4rem;
+    margin-bottom: 1rem;
+    border-radius: var(--card-border-radius-2);
+    animation: fadeOut 5s forwards;
+}
+
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+ .pagination:hover {
+    color: #be32a4;
+ }

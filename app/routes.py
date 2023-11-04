@@ -23,11 +23,7 @@ def index():
     return render_template('index.html')
 
 @app.route('/blog', methods=['GET', 'POST'])  
-def blog():   
-    # Grab all the posts from the database
-    #posts = Post.query.all()
-   
-
+def blog():  
     # Pagination
     page = request.args.get('page', 1, type=int)
     posts = Post.query.order_by(Post.timestamp.desc()).paginate(
@@ -86,7 +82,7 @@ def signin():
         # Check if there's a next parameter in the URL & redirect to that page
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
-            next_page = url_for('index')
+            next_page = url_for('blog')
         return redirect(next_page)
     
     # Render the login form template when visited    
@@ -116,14 +112,20 @@ def signup():
 
 @app.route('/user/<username>') #user
 @login_required
-def profile(username):
+def user(username):
     """Profile Page"""   
     user = User.query.filter_by(username=username).first_or_404()    
-    posts = user.posts  
+    page = request.args.get('page', 1, type=int)
+    posts = user.posts.order_by(Post.timestamp.desc()).paginate(
+        page=page, per_page=app.config['POSTS_PER_PAGE'], error_out=False)
+    next_url = url_for('user', username=user.username, page=posts.next_num) \
+        if posts.has_next else None
+    prev_url = url_for('user', username=user.username, page=posts.prev_num) \
+        if posts.has_prev else None
     authors = [post.author for post in posts]      
     form = EmptyForm() # followers
-    return render_template('profile.html', user=user, posts=posts, authors=authors,
-                            form=form)
+    return render_template('user.html', user=user, posts=posts.items, authors=authors,
+                            next_url=next_url, prev_url=prev_url, form=form)
 
 
 

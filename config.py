@@ -23,7 +23,7 @@ class Config(object):
    
 
     # Pagination
-    POSTS_PER_PAGE = 6
+    POSTS_PER_PAGE = 9
 
     #UPLOAD_FOLDER = 'static/images'
     #ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}

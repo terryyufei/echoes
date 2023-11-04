@@ -44,7 +44,7 @@
                             {% endif %}                           
                         </div>
                         <div class="post__author-info">
-                            <a href="{{ url_for('profile', username=post.author.username) }}">
+                            <a href="{{ url_for('user', username=post.author.username) }}">
                             <h5>By: {{post.author.username }}</h5></a>
                             <small>{{ post.timestamp.strftime('%b-%d-%Y') }}</small>
                         </div>
@@ -53,11 +53,12 @@
         </article>
         {% endfor %}
         {% if prev_url %}
-    <a href="{{ prev_url }}">Newer posts</a>
-    {% endif %}
-    {% if next_url %}
-    <a href="{{ next_url }}">Older posts</a>
-    {% endif %}
+            <a class="pagination" href="{{ prev_url }}">Newer posts  &nbsp;<i class="fa-sharp fa-solid fa-arrow-right fa-lg"></i></a>
+           
+        {% endif %}
+        {% if next_url %}
+            <a class="pagination"  href="{{ next_url }}"><i class="fa-sharp fa-solid fa-arrow-left fa-lg"></i>&nbsp; Older posts</a>
+        {% endif %}
     </div>
 </section>
 

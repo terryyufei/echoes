@@ -29,7 +29,7 @@
     {% block navbar %}
     <nav>
         <div class="container nav__container">
-            <a href="/index" class="nav__logo"><img src="/static/img/echologoblue.png" class="nav-img" alt=""></a>
+            <a href="/index" class="nav__logo"><img src="/static/img/new-echo.png" class="nav-img" alt=""></a>
             
             <!-- <a href="/signin">Sign In</a> -->
 
@@ -50,7 +50,7 @@
 
                     </div>
                     <ul>
-                        <li><a href="{{ url_for('profile', username=current_user.username) }}">Profile</a></li>
+                        <li><a href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>
                         <li><a href="{{ url_for('logout') }}">Logout</a></li>
                         {% endif %}
                     </ul>
