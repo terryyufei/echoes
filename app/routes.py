@@ -43,13 +43,7 @@ def blog():
 
 
 
-@app.route('/services')  
-def services():
-    # Add your blog logic here
-    return render_template('services.html')
-
-
-  
+ 
 @app.route('/post/<int:post_id>')
 def single_post(post_id):
    post = Post.query.get_or_404(post_id)
