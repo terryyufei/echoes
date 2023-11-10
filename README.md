@@ -60,41 +60,41 @@
 <p>
     <h4>Application Logic(app folder)</h4>
     <ol>
-        <li><em>static and templates: </em>flask uses 'static' folder to serve static assest(CSS, JS and images)
+        <li><strong>static and templates: </strong>flask uses 'static' folder to serve static assest(CSS, JS and images)
         and 'templates' folder for HTML templates.
         </li>
-        <li><em>Python Modules:</em>
+        <li><strong>Python Modules:</strong>
         <ul>
-            <li><em>email.py: </em>Handles email-related logic.</li>
-            <li><em>error.py: </em>Error handling and custom error pages.</li>
-            <li><em>forms.py: </em>Flask forms to handle user input</li>
-            <li><em>__init__.py: </em>Marks the 'app' directory as a python package</li>
-            <li><em>models.py: </em>Defines my database models</li>
-            <li><em>routes.py: </em>Defines flask routes and views</li>
+            <li><strong>email.py: </strong>Handles email-related logic.</li>
+            <li><strong>error.py: </strong>Error handling and custom error pages.</li>
+            <li><strong>forms.py: </strong>Flask forms to handle user input</li>
+            <li><strong>__init__.py: </strong>Marks the 'app' directory as a python package</li>
+            <li><strong>models.py: </strong>Defines my database models</li>
+            <li><strong>routes.py: </strong>Defines flask routes and views</li>
         </ul></li>
     </ol>
 </p>
 <p>
     <h4>Configuration and Main Application File</h4>
     <ol>
-        <li><em>config.py: </em>Holds configuration settings for my flask application</li>
-        <li><em>echoes.py: </em>Main application module for my flask application. Sets up Flask and provides utility for Flask shell</li>
+        <li><strong>config.py: </strong>Holds configuration settings for my flask application</li>
+        <li><strong>echoes.py: </strong>Main application module for my flask application. Sets up Flask and provides utility for Flask shell</li>
     </ol>
 </p>
 <p>
     <h4>Auxillary Directories</h4>
     <ol>
-        <li><em>migrations: </em>Contains my database migration scripts</li>
-        <li><em>web_static: </em>Contains my intial static file(with no Jinja)</li>       
+        <li><strong>migrations: </strong>Contains my database migration scripts</li>
+        <li><strong>web_static: </strong>Contains my intial static file(with no Jinja)</li>       
     </ol>
 </p>
 <p>
     <h4>Testing</h4>
     <ul>
-         <li><em>tests.py: </em> test cases for my flask application</li>
+         <li><strong>tests.py: </strong> test cases for my flask application</li>
     </ul>
 </p>
 <p>
     <h4>Documentation</h4>
-    <li><em>README.md: </em>Provides information about the project</li>
+    <li><strong>README.md: </strong>Provides information about the project</li>
 </p>
