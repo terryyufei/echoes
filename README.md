@@ -110,6 +110,6 @@
         <li>Create a virtual environment</li>
         <li>Activate the virtual environment</li>
         <li>Install the required dependancies</li>
-            ### pip install -r requirements.txt
+            ## pip install -r requirements.txt
     </ol>
 </p>
