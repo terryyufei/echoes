@@ -168,7 +168,7 @@
         <li><a href="https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-22-04">Digital Ocean gunicorn installation</a></li>
         <li><a href="https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-22-04">Digital Ocean Nginx installation</a></li>
         <li><a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-22-04">Digital Ocean Server setup</a></li>
-        <li><a href="https://flask.palletsprojects.com/en/3.0.x/"></a>Flask Documentation</li>
+        <li><a href="https://flask.palletsprojects.com/en/3.0.x/">Flask Documentation</a></li>
         <li>chatGPT</li>
     </ol>
 </p>
