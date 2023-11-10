@@ -1,5 +1,7 @@
-<h2>Echoes</h2>
-<p><i>Where every echo unveils a new tale </i></p>
+<h1 style="text-align: center;">Echoes</h1>
+<h2 style="text-align: center;"><i>Where every echo unveils a new tale</i></h2>
+
+<hr>
 
 ![image](https://github.com/terryyufei/echoes/assets/123143795/ca3548e8-4e88-44e0-b2c8-5ec5f237af94)
 
