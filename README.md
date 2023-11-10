@@ -1,14 +1,16 @@
-<h1 style="text-align: center;">Echoes</h1>
-<h2 style="text-align: center;"><i>Where every echo unveils a new tale</i></h2>
+<h1>Echoes</h1>
+<h2><i>Where every echo unveils a new tale </i></h2>
 
 <hr>
 
 ![image](https://github.com/terryyufei/echoes/assets/123143795/ca3548e8-4e88-44e0-b2c8-5ec5f237af94)
 
 
+<hr>
+
 <h3>Introduction</h3>
 <p>
-    Welcome to <a href="https://echoesblog.tech/index">Echoes,</a>  a blog platform where every echo unveils a new tale. This project was developed as part of my ALX End of Foundations Portfolio. 
+    Welcome to <a href="https://echoesblog.tech/index">Echoes</a>, a blog platform where every echo unveils a new tale. This project was developed as part of my ALX End of Foundations Portfolio. 
     Echoes enables users to sign up, sign in, and share their thoughts through blog posts.
     Additionally, users have the ability to update their profiles, follow, and unfollow each other, fostering a dynamic and engaging community.
     And the best part is that users don't even have to sign up in order to read the posts!
@@ -181,7 +183,7 @@
 <h4>Individuals: </h4>
 <p>
     <ol>
-        <li>My mentor, <a href="https://github.com/muindetuva">Alfred. </a>
+        <li>My mentor, <a href="https://github.com/muindetuva">Alfred </a>.
             A heartfelt thank you to my mentor for providing guidance, support, and valuable insights throughout the development of Echoes. 
             Your expertise and encouragement were crucial in overcoming challenges and improving the project.
         </li>
@@ -191,7 +193,7 @@
             developer. His constructive feedback and collaborative efforts significantly enhanced the quality of the project.
         </li>
         <li>
-            My friend, <a href="https://github.com/WinnieNgina">Winnie. </a>
+            My friend, <a href="https://github.com/WinnieNgina">Winnie </a>.
             A special thanks for being my personal rubber duck, and for actively participating in discussions, brainstorming sessions, and code reviews.
             And for believing in me even when I didn't.
         </li>
