@@ -1,12 +1,15 @@
 <h2>Echoes</h2>
 <p><i>Where every echo unveils a new tale </i></p>
 
+![image](https://github.com/terryyufei/echoes/assets/123143795/ca3548e8-4e88-44e0-b2c8-5ec5f237af94)
+
+
 <h3>Introduction</h3>
 <p>
     Welcome to <a href="https://echoesblog.tech/index">Echoes,</a>  a blog platform where every echo unveils a new tale. This project was developed as part of my ALX End of Foundations Portfolio. 
     Echoes enables users to sign up, sign in, and share their thoughts through blog posts.
     Additionally, users have the ability to update their profiles, follow, and unfollow each other, fostering a dynamic and engaging community.
-    And the best part is that users don't even have to sign up inorder to read the posts!
+    And the best part is that users don't even have to sign up in order to read the posts!
 </p>
 <p>
     I initially didn't know what to build or what tech stack to use. I contemplated learning MERN and using it for my project but it was obviously a crazy
@@ -50,10 +53,10 @@
 <h3>Architecture</h3>
 <p>
     The decision-making process for the project's architecture involved carefully considering the best approach. 
-    A critical choice was whether to start with the backend or frontend development. 
+    A critical choice was whether to start with the backend or front-end development. 
     Given my limited experience with Jinja templates (used by Flask), 
     the decision was made to kickstart the project by building static pages first. 
-    This visual representation of the frontend helped streamline the backend development process.
+    This visual representation of the front end helped streamline the backend development process.
 </p>
 <p>
     Following the Flask microframework architecture facilitated the separation of concerns, enhancing code organization. 
@@ -62,8 +65,8 @@
 <p>
     <h4>Application Logic(app folder)</h4>
     <ol>
-        <li><strong>static and templates: </strong>flask uses 'static' folder to serve static assest(CSS, JS and images)
-        and 'templates' folder for HTML templates.
+        <li><strong>static and templates: </strong>flask uses 'static' folder to serve static assets(CSS, JS and images)
+        and the 'templates' folder for HTML templates.
         </li>
         <li><strong>Python Modules:</strong>
         <ul>
@@ -87,7 +90,7 @@
     <h4>Auxillary Directories</h4>
     <ol>
         <li><strong>migrations: </strong>Contains my database migration scripts</li>
-        <li><strong>web_static: </strong>Contains my intial static file(with no Jinja)</li>       
+        <li><strong>web_static: </strong>Contains my initial static file(with no Jinja)</li>       
     </ol>
 </p>
 <p>
@@ -182,12 +185,12 @@
         </li>
         <li>
             My friend, <a href="https://github.com/astianmuchui">Sebastian</a>
-            who makes the most beautiful websites and inspires me everyday to become the best 
+            who makes the most beautiful websites and inspires me every day to become the best 
             developer. His constructive feedback and collaborative efforts significantly enhanced the quality of the project.
         </li>
         <li>
             My friend, <a href="https://github.com/WinnieNgina">Winnie. </a>
-            A special thanks for being my personal rubberduck, for actively participating in discussions, brainstorming sessions, and code reviews.
+            A special thanks for being my personal rubber duck, and for actively participating in discussions, brainstorming sessions, and code reviews.
             And for believing in me even when I didn't.
         </li>
         <li>
