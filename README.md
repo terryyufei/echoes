@@ -13,16 +13,15 @@
 
 <h3>Languages and frameworks</h3>
 <p>
-    <h4>Frontend:
+    <h4>Frontend:</h4>
         <ul>
             <li>HTML</li>
             <li>CSS</li>
             <li>Javascript</li>
         </ul>
-    </h4>
-    <h4>Backend:
+    
+    <h4>Backend:</h4>
         <ul>
             <li>Flask</li>
-        </ul>
-    </h4>
+        </ul>    
 </p>
