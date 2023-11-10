@@ -3,59 +3,61 @@
 
 <h3>Introduction</h3>
 <p>
-    For my ALX end of foundations portfolio project, I built a blog platform called echoes.
-    Echoes is a blog platform where users can sign up, sign in, and post content. Users can also update their profile, follow and unfollow each other.
+    Welcome to Echoes, a blog platform where every echo unveils a new tale. This project was developed as part of my ALX End of Foundations Portfolio. 
+    Echoes enables users to sign up, sign in, and share their thoughts through blog posts.
+    Additionally, users have the ability to update their profiles, follow, and unfollow each other, fostering a dynamic and engaging community.
+    And the best part is that users don't even have to sign up inorder to read the posts!
 </p>
 <p>
-    I initially didn't know what to build or what tech stack to use. I contemplated learning MERN and using it for my project but it was obvisouly a crazy
-    idea because I had only a  month to do this. I decided to use everything I had laerned in ALX so far and it was the best decision I ever made.
+    I initially didn't know what to build or what tech stack to use. I contemplated learning MERN and using it for my project but it was obviously a crazy
+    idea because I had only a  month to do this. I decided to use everything I had learned at ALX so far and it was the best decision I ever made.
 </p>
 
-<h3>Languages and frameworks</h3>
+<h3>Technology Stack</h3>
 <p>
     <h4>Frontend: </h4>
         <ul>
             <li>HTML</li>
             <li>CSS</li>
-            <li>Javascript</li>
+            <li>JavaScript</li>
         </ul>
 </p>
 <p>
     <h4>Backend:</h4>
         <ul>
-            <li>Flask</li>
+            <li>Flask(Microframework for Python)</li>
         </ul>
 </p>
 <p>
     <h4>DevOps:</h4>
     <ul>
-        <li>Digital ocean server</li>
-        <li>.tech for hosting</li>
-        <li>Nginx web server</li>
-        <li>Gunicorn application server</li>
-        <li>Certbot for SSL</li>
-        <li>UFW firewall</li>
+        <li>Digital ocean server for hosting</li>
+        <li>.tech domain for online presence</li>
+        <li>Nginx web server for handling HTTP requests</li>
+        <li>Gunicorn application server for serving Flask application</li>
+        <li>Certbot for SSL encryption</li>
+        <li>UFW firewall for security</li>
     </ul>
 </p>
 <p>
     <h4>Database:</h4>
     <ul>
-        <li>SQLITE locally</li>
-        <li>MYSQL in the server</li>
+        <li>SQLITE for local development</li>
+        <li>MYSQL for the server</li>
     </ul>
 </p>
 
 <h3>Architecture</h3>
 <p>
-    I had a hard time deciding on where to start the project. Should I start with the backend and then
-    make the frontend? Or should I start with the frontend?
-    At this point I had little experince with jinja templates, I did like the syntax and I felt they cluttered my HTML.
-    I found it a bit had to style Jinja templates and because of this, I decided to start my project by building the static pages.
-    Just having this visual of how the frontend looks like made it easier for me when I was building the backend
+    The decision-making process for the project's architecture involved carefully considering the best approach. 
+    A critical choice was whether to start with the backend or frontend development. 
+    Given my limited experience with Jinja templates (used by Flask), 
+    the decision was made to kickstart the project by building static pages first. 
+    This visual representation of the frontend helped streamline the backend development process.
 </p>
 <p>
-    Since I used flask, I followed the microframework architecture which helps with separation of concerns.
-    Here's a brief breakdown of my file structure;
+    Following the Flask microframework architecture facilitated the separation of concerns, enhancing code organization. 
+    The file structure includes:
 </p>
 <p>
     <h4>Application Logic(app folder)</h4>
@@ -66,7 +68,7 @@
         <li><strong>Python Modules:</strong>
         <ul>
             <li><strong>email.py: </strong>Handles email-related logic.</li>
-            <li><strong>error.py: </strong>Error handling and custom error pages.</li>
+            <li><strong>error.py: </strong>Handles error logic and custom error pages.</li>
             <li><strong>forms.py: </strong>Flask forms to handle user input</li>
             <li><strong>__init__.py: </strong>Marks the 'app' directory as a python package</li>
             <li><strong>models.py: </strong>Defines my database models</li>
@@ -96,5 +98,18 @@
 </p>
 <p>
     <h4>Documentation</h4>
-    <li><strong>README.md: </strong>Provides information about the project</li>
+    <li><strong>README.md: </strong>This document, providing comprehensive information about the project.</li>
+</p>
+
+<h3>Getting Started</h3>
+<p>
+    To set up and run the Echoes project locally, follow these steps:
+    <ol>
+        <li>Clone the repository</li>
+        <li>Navigate to the project directory</li>
+        <li>Create a virtual environment</li>
+        <li>Activate the virtual environment</li>
+        <li>Install the required dependancies</li>
+            *  pip install -r requirements.txt
+    </ol>
 </p>
