@@ -183,7 +183,7 @@
 <h4>Individuals: </h4>
 <p>
     <ol>
-        <li>My mentor, <a href="https://github.com/muindetuva">Alfred </a>.
+        <li>My mentor, <a href="https://github.com/muindetuva">Alfred</a>.
             A heartfelt thank you to my mentor for providing guidance, support, and valuable insights throughout the development of Echoes. 
             Your expertise and encouragement were crucial in overcoming challenges and improving the project.
         </li>
@@ -193,7 +193,7 @@
             developer. His constructive feedback and collaborative efforts significantly enhanced the quality of the project.
         </li>
         <li>
-            My friend, <a href="https://github.com/WinnieNgina">Winnie </a>.
+            My friend, <a href="https://github.com/WinnieNgina">Winnie</a>.
             A special thanks for being my personal rubber duck, and for actively participating in discussions, brainstorming sessions, and code reviews.
             And for believing in me even when I didn't.
         </li>
