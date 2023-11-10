@@ -3,7 +3,7 @@
 
 <h3>Introduction</h3>
 <p>
-    Welcome to Echoes, a blog platform where every echo unveils a new tale. This project was developed as part of my ALX End of Foundations Portfolio. 
+    Welcome to <a href="https://echoesblog.tech/index">Echoes,</a>  a blog platform where every echo unveils a new tale. This project was developed as part of my ALX End of Foundations Portfolio. 
     Echoes enables users to sign up, sign in, and share their thoughts through blog posts.
     Additionally, users have the ability to update their profiles, follow, and unfollow each other, fostering a dynamic and engaging community.
     And the best part is that users don't even have to sign up inorder to read the posts!
@@ -110,6 +110,94 @@
         <li>Create a virtual environment</li>
         <li>Activate the virtual environment</li>
         <li>Install the required dependancies</li>
-            <em>pip install -r requirements.txt</em>
+            <em>pip install -r requirements.txt</em> 
+        <li>Run the Flask application</li>
+            <em>flask run or flask run --debug</em>
+        <li>Acess the application</li>
+            <em>http://127.0.0.1:5000/</em>
     </ol>
+</p>
+<p>
+   Now you have the Echoes project up and running locally. Feel free to explore, make changes, 
+   and contribute to the project! 
+</p>
+
+<h3>Deployment and Hosting</h3>
+<p>
+    Echoes is hosted on a .tech domain. Purchase a domain name on .tech and add A records 
+    pointing to your server's IP address.
+</p>
+<p>
+    Echoes was deployed on a Digital Ocean server. Follow these steps for deployment.
+    <ol>
+        <li>Set up a Digital Ocean Droplet:
+            <ul>
+                <li>Create a new droplet</li>
+                <li>Choose a distribution(eg Ubuntu)</li>
+                <li>Set up SSH access and log in to your Droplet from your local terminal</li>
+                <li>Create a less privileged user and give them sudo privileges</li>
+                <li>Set up SSH for the user by adding your public into .ssh</li>
+                <li>Exit and SSH into the droplet as the less privileged user</li>
+            </ul>
+        </li>
+        <li>Secure your server with UFW</li>
+        <li>Clone the repository</li>
+        <li>Navigate to the project directory</li>
+        <li>Create a virtual environment</li>
+        <li>Activate the virtual environment</li>
+        <li>Install dependancies</li>
+        <li>Configure the application (modify config.py to match server configuration)</li>
+        <li>Install, set up MYSQL and upgrade the database</li>
+        <li>Install and configure Nginx</li>
+        <li>Install and configure Gunicorn </li>
+        <li>Setup SSL with Certbot</li>
+        <li>Visit your domain</li>        
+    </ol>
+</p>
+
+<h3>Acknowledgments</h3>
+<p>
+    I want to express my gratitude to the following resources and individuals who greatly 
+    contributed to the development of the Echoes project:
+</p>
+
+<h4>Resources: </h4>
+<p>
+    <ol>
+        <li><a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world">The flask mega tutorial</a></li>
+        <li><a href="https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-22-04">Digital Ocean gunicorn installation</a></li>
+        <li><a href="https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-22-04">Digital Ocean Nginx installation</a></li>
+        <li><a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-22-04">Digital Ocean Server setup</a></li>
+        <li><a href="https://flask.palletsprojects.com/en/3.0.x/"></a>Flask Documentation</li>
+        <li>chatGPT</li>
+    </ol>
+</p>
+
+<h4>Individuals: </h4>
+<p>
+    <ol>
+        <li>My mentor, <a href="https://github.com/muindetuva">Alfred</a>
+            A heartfelt thank you to my mentor for providing guidance, support, and valuable insights throughout the development of Echoes. 
+            Their expertise and encouragement were crucial in overcoming challenges and improving the project.
+        </li>
+        <li>
+            My friend, <a href="https://github.com/astianmuchui">Sebastian</a>
+            who makes the most beautiful websites and inspires me everyday to become the best 
+            developer. His constructive feedback and collaborative efforts significantly enhanced the quality of the project.
+        </li>
+        <li>
+            My friend, <a href="https://github.com/WinnieNgina">Winnie</a>
+            A special thanks for being my personal rubberduck, for actively participated in discussions, brainstorming sessions, and code reviews.
+            And for believing in me even when I didn't.
+        </li>
+        <li>
+            I want to acknowledge the ALX community and the wider community of developers and contributors whose open-source projects, discussions, 
+            and code snippets served as a source of inspiration and learning.
+        </li>
+    </ol>
+</p>
+<p>
+    I wouldn't have been able to complete this project without the support of these resources and individuals. 
+    Your contributions have been invaluable, and I am grateful for the knowledge, encouragement, 
+    and camaraderie that fueled the development of Echoes. Thank you!
 </p>
