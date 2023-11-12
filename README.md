@@ -198,7 +198,7 @@
             And for believing in me even when I didn't.
         </li>
         <li>
-            I want to acknowledge the ALX community and the wider community of developers and contributors whose open-source projects, discussions, 
+            I want to acknowledge the <a href="https://www.alxafrica.com/">ALX</a> community and the wider community of developers and contributors whose open-source projects, discussions, 
             and code snippets served as a source of inspiration and learning.
         </li>
     </ol>
